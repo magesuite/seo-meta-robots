@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magesuite" translate="label" sortOrder="300">
+            <label>MageSuite</label>
+        </tab>
+        <section id="seo" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>SEO</label>
+            <tab>magesuite</tab>
+            <resource>MageSuite_SeoMetaRobots::configuration</resource>
+            <group id="robots_meta_tags" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Robots meta tags</label>
+                <field id="urls" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>URL rules</label>
+                    <comment>
+                        <![CDATA[Please provide one URL rule per line. Each rule must have following format: "URL_EXPRESSION;ROBOTS_TAG". Example URL_EXPRESSION: "test/*", "product.html". Allowed robots tag are: INDEX_FOLLOW, INDEX_NOFOLLOW, NOINDEX_FOLLOW, NOINDEX_NOFOLLOW]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

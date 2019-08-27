@@ -1,3 +1,61 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MageSuite\SeoMetaRobots\Model\ResolversPool">
+        <arguments>
+            <argument name="resolvers" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Url</item>
+                    <item name="sort_order" xsi:type="number">10</item>
+                </item>
+                <item name="1" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\CmsPage</item>
+                    <item name="sort_order" xsi:type="number">20</item>
+                </item>
+                <item name="2" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Product</item>
+                    <item name="sort_order" xsi:type="number">20</item>
+                </item>
+                <item name="3" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category</item>
+                    <item name="sort_order" xsi:type="number">30</item>
+                </item>
+                <item name="4" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Action</item>
+                    <item name="sort_order" xsi:type="number">40</item>
+                </item>
+                <item name="5" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Controller</item>
+                    <item name="sort_order" xsi:type="number">50</item>
+                </item>
+                <item name="6" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Module</item>
+                    <item name="sort_order" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MageSuite\SeoMetaRobots\Model\Resolver\Module">
+        <arguments>
+            <argument name="modules" xsi:type="array">
+                <item name="customer" xsi:type="const">MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MageSuite\SeoMetaRobots\Model\Resolver\Controller">
+        <arguments>
+            <argument name="controllers" xsi:type="array">
+                <item name="customer_account" xsi:type="const">MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MageSuite\SeoMetaRobots\Model\Resolver\Action">
+        <arguments>
+            <argument name="actions" xsi:type="array">
+                <item name="customer_account_login" xsi:type="const">MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
