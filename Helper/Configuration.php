@@ -6,6 +6,9 @@ class Configuration
 {
     const URLS_XML_PATH = 'seo/robots_meta_tags/urls';
 
+    const LINES_DELIMITER = PHP_EOL;
+    const COLUMNS_DELIMITER = ';';
+
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
@@ -23,12 +26,12 @@ class Configuration
             return [];
         }
 
-        $urls = explode(PHP_EOL, $urls);
+        $urls = explode(self::LINES_DELIMITER, $urls);
 
         $return = [];
 
         foreach($urls as $url) {
-            $url = explode(';', $url);
+            $url = explode(self::COLUMNS_DELIMITER, $url);
 
             $return[] = ['expression' => $url[0], 'tag' => $url[1]];
         }
