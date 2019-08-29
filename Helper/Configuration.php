@@ -26,7 +26,7 @@ class Configuration
             return [];
         }
 
-        $urls = explode(self::LINES_DELIMITER, $urls);
+        $urls = explode(self::LINES_DELIMITER, $this->cleanUrlsList($urls));
 
         $return = [];
 
@@ -37,5 +37,12 @@ class Configuration
         }
 
         return $return;
+    }
+
+    protected function cleanUrlsList($urlsList) {
+        $urlsList = str_replace("\r\n", "\n", $urlsList);
+        $urlsList = str_replace("\r", "\n", $urlsList);
+
+        return $urlsList;
     }
 }

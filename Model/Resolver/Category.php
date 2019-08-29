@@ -36,13 +36,13 @@ class Category implements RobotsTagResolverInterface
 
         $category = $this->registry->registry('current_category');
 
-        if($category == null) {
+        if ($category == null) {
             return null;
         }
 
         $metaRobots = $category->getMetaRobots();
 
-        if($metaRobots == null) {
+        if ($metaRobots == null) {
             return null;
         }
 

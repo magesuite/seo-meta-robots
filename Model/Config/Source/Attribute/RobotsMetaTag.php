@@ -1,6 +1,5 @@
 <?php
 
-
 namespace MageSuite\SeoMetaRobots\Model\Config\Source\Attribute;
 
 class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource implements \Magento\Framework\Data\OptionSourceInterface
@@ -27,15 +26,15 @@ class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractS
     /**
      * @var array
      */
-    protected $_options = null;
+    protected $options = [];
 
     /**
      * @return array
      */
     public function getAllOptions()
     {
-        if (!$this->_options) {
-            $this->_options = [
+        if (empty($this->options)) {
+            $this->options = [
                 ['label' => 'INDEX,FOLLOW', 'value' => self::INDEX_FOLLOW],
                 ['label' => 'INDEX,NOFOLLOW', 'value' => self::INDEX_NOFOLLOW],
                 ['label' => 'NOINDEX,FOLLOW', 'value' => self::NOINDEX_FOLLOW],
@@ -43,7 +42,7 @@ class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractS
             ];
         }
 
-        return $this->_options;
+        return $this->options;
     }
 
     /**
