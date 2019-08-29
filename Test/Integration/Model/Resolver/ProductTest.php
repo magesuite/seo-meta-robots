@@ -45,12 +45,12 @@ class ProductTest extends \PHPUnit\Framework\TestCase
 
     public static function productsFixture()
     {
-        include __DIR__ . '/../../../_files/products.php';
+        include __DIR__ . '/../../_files/products.php';
     }
 
     public static function productsFixtureRollback()
     {
-        include __DIR__ . '/../../../_files/products_rollback.php';
+        include __DIR__ . '/../../_files/products_rollback.php';
     }
 
     /**
@@ -58,12 +58,13 @@ class ProductTest extends \PHPUnit\Framework\TestCase
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture productsFixture
+     * @dataProvider productsWithTags
      */
-    public function testItResolvesCorrectRobotsTag()
+    public function testItResolvesCorrectRobotsTag($sku, $expectedRobotsTag)
     {
         $this->requestStub->method('getFullActionName')->willReturn('catalog_product_view');
 
-        $product = $this->productRepository->get('product_noindex_nofollow');
+        $product = $this->productRepository->get($sku);
 
         if ($this->registry->registry('current_product')) {
             $this->registry->unregister('current_product');
@@ -71,6 +72,14 @@ class ProductTest extends \PHPUnit\Framework\TestCase
 
         $this->registry->register('current_product', $product);
 
-        $this->assertEquals(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW, $this->productResolver->resolve());
+        $this->assertEquals($expectedRobotsTag, $this->productResolver->resolve());
+    }
+
+    public static function productsWithTags()
+    {
+        return [
+            ['product_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
+            ['product_noindex_follow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
+        ];
     }
 }

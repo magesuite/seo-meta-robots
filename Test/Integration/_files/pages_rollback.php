@@ -8,12 +8,14 @@ $registry = $objectManager->get(\Magento\Framework\Registry::class);
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', true);
 
-$productsIds = [555];
+/** @var $page \Magento\Cms\Model\Page */
+foreach (['page_noindex_nofollow', 'page_noindex_follow'] as $pageId) {
+    $page = $objectManager->create(\Magento\Cms\Model\Page::class);
+    $page->load($pageId);
 
-foreach($productsIds as $productId){
-    $product = $objectManager->create(\Magento\Catalog\Model\Product::class);
-    $product->load($productId);
-    if ($product->getId()) {
-        $product->delete();
+    if (!$page->getId()) {
+        continue;
     }
+
+    $page->delete();
 }

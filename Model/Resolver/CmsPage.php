@@ -17,8 +17,7 @@ class CmsPage implements RobotsTagResolverInterface
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \Magento\Cms\Model\Page $cmsPage
-    )
-    {
+    ) {
         $this->request = $request;
         $this->cmsPage = $cmsPage;
     }
@@ -30,13 +29,13 @@ class CmsPage implements RobotsTagResolverInterface
     {
         $fullActionName = $this->request->getFullActionName();
 
-        if($fullActionName != 'cms_index_index' and $fullActionName != 'cms_page_view') {
+        if ($fullActionName != 'cms_index_index' && $fullActionName != 'cms_page_view') {
             return null;
         }
 
         $cmsPage = $this->cmsPage;
 
-        if($cmsPage->getMetaRobots() == null) {
+        if ($cmsPage->getMetaRobots() == null) {
             return null;
         }
 

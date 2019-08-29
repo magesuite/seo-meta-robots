@@ -17,8 +17,7 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
     public function __construct(
         \Magento\Framework\View\Page\Config $pageConfig,
         \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator
-    )
-    {
+    ) {
         $this->pageConfig = $pageConfig;
         $this->robotsTagGenerator = $robotsTagGenerator;
     }

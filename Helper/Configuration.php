@@ -19,10 +19,11 @@ class Configuration
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function getUrls() {
+    public function getUrls()
+    {
         $urls = $this->scopeConfig->getValue(self::URLS_XML_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
-        if(empty($urls)) {
+        if (empty($urls)) {
             return [];
         }
 
@@ -30,7 +31,7 @@ class Configuration
 
         $return = [];
 
-        foreach($urls as $url) {
+        foreach ($urls as $url) {
             $url = explode(self::COLUMNS_DELIMITER, $url);
 
             $return[] = ['expression' => $url[0], 'tag' => $url[1]];
@@ -39,7 +40,8 @@ class Configuration
         return $return;
     }
 
-    protected function cleanUrlsList($urlsList) {
+    protected function cleanUrlsList($urlsList)
+    {
         $urlsList = str_replace("\r\n", "\n", $urlsList);
         $urlsList = str_replace("\r", "\n", $urlsList);
 

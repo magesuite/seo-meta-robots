@@ -31,7 +31,8 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function urls() {
+    public static function urls()
+    {
         return [
             ['test/', 'test/*', true],
             ['test/something/else', 'test/*', true],

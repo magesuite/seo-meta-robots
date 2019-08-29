@@ -17,8 +17,7 @@ class Module implements RobotsTagResolverInterface
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         array $modules = []
-    )
-    {
+    ) {
         $this->request = $request;
         $this->modules = $modules;
     }
@@ -30,7 +29,7 @@ class Module implements RobotsTagResolverInterface
     {
         $controllerModule = $this->request->getModuleName();
 
-        if(in_array($controllerModule, array_keys($this->modules))) {
+        if (in_array($controllerModule, array_keys($this->modules))) {
             return $this->modules[$controllerModule];
         }
 

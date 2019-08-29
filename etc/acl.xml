@@ -7,7 +7,8 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="MageSuite_SeoMetaRobots::configuration" title="MageSuite Seo Meta Robots URLs configuration"/></resource>
+                            <resource id="MageSuite_SeoMetaRobots::configuration" title="MageSuite Seo Meta Robots URLs configuration"/>
+                        </resource>
                     </resource>
                 </resource>
             </resource>

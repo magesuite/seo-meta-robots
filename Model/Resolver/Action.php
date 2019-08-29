@@ -17,8 +17,7 @@ class Action implements RobotsTagResolverInterface
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         array $actions = []
-    )
-    {
+    ) {
         $this->request = $request;
         $this->actions = $actions;
     }
@@ -30,7 +29,7 @@ class Action implements RobotsTagResolverInterface
     {
         $action = $this->request->getFullActionName();
 
-        if(in_array($action, array_keys($this->actions))) {
+        if (in_array($action, array_keys($this->actions))) {
             return $this->actions[$action];
         }
 

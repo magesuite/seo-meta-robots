@@ -17,8 +17,7 @@ class Category implements RobotsTagResolverInterface
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \Magento\Framework\Registry $registry
-    )
-    {
+    ) {
         $this->request = $request;
         $this->registry = $registry;
     }

@@ -14,16 +14,17 @@ class RobotsTagGenerator
         $this->resolversPool = $resolversPool;
     }
 
-    public function generate() {
+    public function generate()
+    {
         $resolvers = $this->resolversPool->getResolvers();
 
-        foreach($resolvers as $resolver) {
+        foreach ($resolvers as $resolver) {
             /** @var \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface $resolver */
             $resolver = $resolver['resolver'];
 
             $resolvedValue = $resolver->resolve();
 
-            if($resolvedValue != null) {
+            if ($resolvedValue != null) {
                 return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[$resolvedValue];
             }
         }

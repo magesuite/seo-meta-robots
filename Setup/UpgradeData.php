@@ -4,6 +4,8 @@ namespace MageSuite\SeoMetaRobots\Setup;
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
+    const ATTRIBUTE_CODE = 'meta_robots';
+
     /**
      * @var \Magento\Eav\Setup\EavSetup
      */
@@ -22,8 +24,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     public function __construct(
         \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory,
         \Magento\Framework\Setup\ModuleDataSetupInterface $moduleDataSetupInterface
-    )
-    {
+    ) {
         $this->eavSetupFactory = $eavSetupFactory;
         $this->moduleDataSetupInterface = $moduleDataSetupInterface;
 
@@ -33,8 +34,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
     public function upgrade(
         \Magento\Framework\Setup\ModuleDataSetupInterface $setup,
         \Magento\Framework\Setup\ModuleContextInterface $context
-    )
-    {
+    ) {
         if (version_compare($context->getVersion(), '1.0.2', '<')) {
             $this->addMetaRobotsProductAttribute();
         }
@@ -46,10 +46,10 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 
     protected function addMetaRobotsProductAttribute()
     {
-        if (!$this->eavSetup->getAttributeId(\Magento\Catalog\Model\Product::ENTITY, 'meta_robots')) {
+        if (!$this->eavSetup->getAttributeId(\Magento\Catalog\Model\Product::ENTITY, self::ATTRIBUTE_CODE)) {
             $this->eavSetup->addAttribute(
                 \Magento\Catalog\Model\Product::ENTITY,
-                'meta_robots',
+                self::ATTRIBUTE_CODE,
                 [
                     'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                     'type' => 'int',
@@ -73,10 +73,10 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 
     protected function addMetaRobotsCategoryAttribute()
     {
-        if (!$this->eavSetup->getAttributeId(\Magento\Catalog\Model\Category::ENTITY, 'meta_robots')) {
+        if (!$this->eavSetup->getAttributeId(\Magento\Catalog\Model\Category::ENTITY, self::ATTRIBUTE_CODE)) {
             $this->eavSetup->addAttribute(
                 \Magento\Catalog\Model\Category::ENTITY,
-                'meta_robots',
+                self::ATTRIBUTE_CODE,
                 [
                     'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                     'type' => 'int',

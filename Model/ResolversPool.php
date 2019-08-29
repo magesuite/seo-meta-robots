@@ -18,8 +18,9 @@ class ResolversPool
         $this->resolvers = $resolvers;
     }
 
-    public function getResolvers() {
-        if($this->resolvers == null) {
+    public function getResolvers()
+    {
+        if ($this->resolvers == null) {
             return [];
         }
 

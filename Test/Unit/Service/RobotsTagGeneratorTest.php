@@ -54,14 +54,21 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedDefaultValue, $this->robotsTagGenerator->generate());
     }
 
-    protected function generateResolvers($values){
+    protected function generateResolvers($values)
+    {
         $resolvers = [];
 
-        foreach($values as $value) {
+        foreach ($values as $value) {
             $resolvers[] = ['resolver' => new class($value) implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
                 protected $value;
-                public function __construct($value) { $this->value = $value; }
-                public function resolve(){ return $this->value; }
+                public function __construct($value)
+                {
+                    $this->value = $value;
+                }
+                public function resolve()
+                {
+                    return $this->value;
+                }
             }];
         }
 

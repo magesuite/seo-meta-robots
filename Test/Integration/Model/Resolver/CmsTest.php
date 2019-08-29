@@ -32,12 +32,12 @@ class CmsTest extends \PHPUnit\Framework\TestCase
 
     public static function pagesFixture()
     {
-        include __DIR__ . '/../../../_files/pages.php';
+        include __DIR__ . '/../../_files/pages.php';
     }
 
     public static function pagesFixtureRollback()
     {
-        include __DIR__ . '/../../../_files/pages_rollback.php';
+        include __DIR__ . '/../../_files/pages_rollback.php';
     }
 
     /**
@@ -45,18 +45,27 @@ class CmsTest extends \PHPUnit\Framework\TestCase
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture pagesFixture
+     * @dataProvider cmsPagesWithTags
      */
-    public function testItResolvesCorrectRobotsTag()
+    public function testItResolvesCorrectRobotsTag($pageId, $expectedRobotsTag)
     {
         $this->requestStub->method('getFullActionName')->willReturn('cms_page_view');
 
-        $page = $this->pageRepository->getById('page_noindex_nofollow');
+        $page = $this->pageRepository->getById($pageId);
 
         $resolver = $this->objectManager->create(
             \MageSuite\SeoMetaRobots\Model\Resolver\CmsPage::class,
             ['cmsPage' => $page, 'request' => $this->requestStub]
         );
 
-        $this->assertEquals(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW, $resolver->resolve());
+        $this->assertEquals($expectedRobotsTag, $resolver->resolve());
+    }
+
+    public static function cmsPagesWithTags()
+    {
+        return [
+            ['page_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
+            ['page_noindex_follow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
+        ];
     }
 }

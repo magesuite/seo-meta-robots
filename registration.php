@@ -5,4 +5,3 @@
     'MageSuite_SeoMetaRobots',
     __DIR__
 );
-

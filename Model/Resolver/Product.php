@@ -17,8 +17,7 @@ class Product implements RobotsTagResolverInterface
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \Magento\Framework\Registry $registry
-    )
-    {
+    ) {
         $this->request = $request;
         $this->registry = $registry;
     }
@@ -36,13 +35,13 @@ class Product implements RobotsTagResolverInterface
 
         $product = $this->registry->registry('current_product');
 
-        if($product == null) {
+        if ($product == null) {
             return null;
         }
 
         $metaRobots = $product->getMetaRobots();
 
-        if($metaRobots == null) {
+        if ($metaRobots == null) {
             return null;
         }
 
