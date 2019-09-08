@@ -24,6 +24,12 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
+        $pageLayout = $this->pageConfig->getPageLayout();
+
+        if (!$pageLayout) {
+            return;
+        }
+
         $robotsTagValue = $this->robotsTagGenerator->generate();
 
         $this->pageConfig->setRobots($robotsTagValue);
