@@ -34,7 +34,12 @@ class Configuration
         foreach ($urls as $url) {
             $url = explode(self::COLUMNS_DELIMITER, $url);
 
-            $return[] = ['expression' => $url[0], 'tag' => $url[1]];
+            try {
+                $return[] = ['expression' => $url[0], 'tag' => $url[1]];
+            }
+            catch (\Exception $exception) {
+                //Do nothing.
+            }
         }
 
         return $return;
