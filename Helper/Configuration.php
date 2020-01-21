@@ -5,6 +5,7 @@ namespace MageSuite\SeoMetaRobots\Helper;
 class Configuration
 {
     const URLS_XML_PATH = 'seo/robots_meta_tags/urls';
+    const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH = 'seo/robots_meta_tags/index_only_on_first_page_of_category';
 
     const LINES_DELIMITER = PHP_EOL;
     const COLUMNS_DELIMITER = ';';
@@ -51,5 +52,10 @@ class Configuration
         $urlsList = str_replace("\r", "\n", $urlsList);
 
         return $urlsList;
+    }
+
+    public function isIndexOnCategoryFirstPageEnabled()
+    {
+        return $this->scopeConfig->getValue(self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 }

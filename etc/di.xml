@@ -15,21 +15,25 @@
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Product</item>
                     <item name="sort_order" xsi:type="number">20</item>
                 </item>
+                <item name="category_pagination" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category\IndexOnlyOnFirstPageOfCategory</item>
+                    <item name="sort_order" xsi:type="number">30</item>
+                </item>
                 <item name="category" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category</item>
-                    <item name="sort_order" xsi:type="number">30</item>
+                    <item name="sort_order" xsi:type="number">40</item>
                 </item>
                 <item name="action" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Action</item>
-                    <item name="sort_order" xsi:type="number">40</item>
+                    <item name="sort_order" xsi:type="number">50</item>
                 </item>
                 <item name="controller" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Controller</item>
-                    <item name="sort_order" xsi:type="number">50</item>
+                    <item name="sort_order" xsi:type="number">60</item>
                 </item>
                 <item name="module" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Module</item>
-                    <item name="sort_order" xsi:type="number">60</item>
+                    <item name="sort_order" xsi:type="number">70</item>
                 </item>
             </argument>
         </arguments>
