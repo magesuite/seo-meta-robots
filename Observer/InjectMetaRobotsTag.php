@@ -13,18 +13,24 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
      * @var \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator
      */
     protected $robotsTagGenerator;
+    /**
+     * @var \Magento\Framework\View\LayoutInterface
+     */
+    protected $layout;
 
     public function __construct(
         \Magento\Framework\View\Page\Config $pageConfig,
-        \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator
+        \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator,
+        \Magento\Framework\View\LayoutInterface $layout
     ) {
         $this->pageConfig = $pageConfig;
         $this->robotsTagGenerator = $robotsTagGenerator;
+        $this->layout = $layout;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $pageLayout = $this->pageConfig->getPageLayout();
+        $pageLayout = $this->pageConfig->getPageLayout() ? $this->pageConfig->getPageLayout() : $this->layout->getUpdate()->getPageLayout();
 
         if (!$pageLayout) {
             return;
