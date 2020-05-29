@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
+namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
 class UrlTest extends \PHPUnit\Framework\TestCase
 {
@@ -19,7 +19,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
     protected $requestStub;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Url
+     * @var \Visma\SeoMetaRobots\Model\Resolver\Url
      */
     protected $urlResolver;
 
@@ -27,7 +27,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 
-        $this->configurationStub = $this->getMockBuilder(\MageSuite\SeoMetaRobots\Helper\Configuration::class)
+        $this->configurationStub = $this->getMockBuilder(\Visma\SeoMetaRobots\Helper\Configuration::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -36,7 +36,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             ->getMock();
 
         $this->urlResolver = $this->objectManager->create(
-            \MageSuite\SeoMetaRobots\Model\Resolver\Url::class,
+            \Visma\SeoMetaRobots\Model\Resolver\Url::class,
             ['configuration' => $this->configurationStub, 'request' => $this->requestStub]
         );
     }
@@ -52,6 +52,6 @@ class UrlTest extends \PHPUnit\Framework\TestCase
 
         $result = $this->urlResolver->resolve();
 
-        $this->assertEquals(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, $result);
+        $this->assertEquals(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, $result);
     }
 }

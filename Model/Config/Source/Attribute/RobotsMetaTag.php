@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Model\Config\Source\Attribute;
+namespace Visma\SeoMetaRobots\Model\Config\Source\Attribute;
 
 class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource implements \Magento\Framework\Data\OptionSourceInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Model;
+namespace Visma\SeoMetaRobots\Model;
 
 class ResolversPool
 {

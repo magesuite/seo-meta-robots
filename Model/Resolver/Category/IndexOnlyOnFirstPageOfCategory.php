@@ -1,8 +1,8 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Model\Resolver\Category;
+namespace Visma\SeoMetaRobots\Model\Resolver\Category;
 
-class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
+class IndexOnlyOnFirstPageOfCategory implements \Visma\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
     const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
     const PAGINATION_PARAM = 'p';
@@ -16,14 +16,14 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
      */
     protected $registry;
     /**
-     * @var \MageSuite\SeoMetaRobots\Helper\Configuration
+     * @var \Visma\SeoMetaRobots\Helper\Configuration
      */
     protected $configuration;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \Magento\Framework\Registry $registry,
-        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration
+        \Visma\SeoMetaRobots\Helper\Configuration $configuration
     ) {
         $this->request = $request;
         $this->registry = $registry;
@@ -53,9 +53,9 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         $params = $this->request->getParams();
 
         if (isset($params[self::PAGINATION_PARAM]) && $params[self::PAGINATION_PARAM] != 1) {
-            return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW;
+            return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW;
         }
 
-        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW;
+        return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW;
     }
 }

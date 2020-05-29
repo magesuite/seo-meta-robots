@@ -1,5 +1,5 @@
 {
-  "name": "creativestyle/magesuite-seo-meta-robots",
+  "name": "visma/module-seo-meta-robots",
   "description": "Extension allows control over robots meta tag",
   "type": "magento2-module",
   "license": [
@@ -12,7 +12,7 @@
   "autoload": {
     "files": [ "registration.php" ],
     "psr-4": {
-      "MageSuite\\SeoMetaRobots\\": ""
+      "Visma\\SeoMetaRobots\\": ""
     }
   }
 }

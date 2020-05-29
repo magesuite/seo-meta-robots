@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Setup;
+namespace Visma\SeoMetaRobots\Setup;
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
@@ -56,7 +56,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                     'unique' => false,
                     'label' => 'Meta Robots',
                     'input' => 'select',
-                    'source' => \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::class,
+                    'source' => \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::class,
                     'group' => 'Search Engine Optimization',
                     'required' => false,
                     'sort_order' => 45,
@@ -83,7 +83,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                     'unique' => false,
                     'label' => 'Meta Robots',
                     'input' => 'select',
-                    'source' => \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::class,
+                    'source' => \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::class,
                     'group' => 'Search Engine Optimization',
                     'required' => false,
                     'sort_order' => 45,

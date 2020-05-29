@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Model\Resolver;
+namespace Visma\SeoMetaRobots\Model\Resolver;
 
 class Url implements RobotsTagResolverInterface
 {
@@ -10,19 +10,19 @@ class Url implements RobotsTagResolverInterface
     protected $request;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Service\UrlMatcher
+     * @var \Visma\SeoMetaRobots\Service\UrlMatcher
      */
     protected $urlMatcher;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Helper\Configuration
+     * @var \Visma\SeoMetaRobots\Helper\Configuration
      */
     protected $configuration;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
-        \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher,
-        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration
+        \Visma\SeoMetaRobots\Service\UrlMatcher $urlMatcher,
+        \Visma\SeoMetaRobots\Helper\Configuration $configuration
     ) {
         $this->request = $request;
         $this->urlMatcher = $urlMatcher;
@@ -55,10 +55,10 @@ class Url implements RobotsTagResolverInterface
     {
         $tag = strtoupper($tag);
 
-        if (!isset(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag])) {
+        if (!isset(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag])) {
             return null;
         }
 
-        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag];
+        return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag];
     }
 }

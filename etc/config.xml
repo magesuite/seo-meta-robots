@@ -2,9 +2,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <seo>
-            <robots_meta_tags>
+            <visma_seo_meta_robots>
                 <index_only_on_first_page_of_category>0</index_only_on_first_page_of_category>
-            </robots_meta_tags>
+            </visma_seo_meta_robots>
         </seo>
     </default>
 </config>

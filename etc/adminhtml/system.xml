@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<config 
+<config
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="magesuite" translate="label" sortOrder="300">
-            <label>MageSuite</label>
+        <tab id="visma" translate="label" sortOrder="300">
+            <label>Visma Digital Commerce</label>
         </tab>
-        <section id="seo" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>SEO</label>
-            <tab>magesuite</tab>
-            <resource>MageSuite_SeoMetaRobots::configuration</resource>
+        <section id="visma_seo_meta_robots" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Meta Robots</label>
+            <tab>visma</tab>
+            <resource>Visma_SeoMetaRobots::configuration</resource>
             <group id="robots_meta_tags" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Robots meta tags</label>
                 <field id="urls" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">

@@ -11,7 +11,7 @@ $page->setTitle('Page with noindex, nofollow')
     ->setContent('<h1>Cms Page Design Blank Title1</h1>')
     ->setMetaDescription('Meta description')
     ->setPageLayout('1column')
-    ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW)
+    ->setMetaRobots(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW)
     ->save();
 
 /** @var $page \Magento\Cms\Model\Page */
@@ -23,5 +23,5 @@ $page->setTitle('Page with noindex, follow')
     ->setContent('<h1>Cms Page Design Blank Title1</h1>')
     ->setMetaDescription('Meta description')
     ->setPageLayout('1column')
-    ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW)
+    ->setMetaRobots(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW)
     ->save();

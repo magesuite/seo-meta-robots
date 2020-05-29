@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
+namespace Visma\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class ProductTest extends \PHPUnit\Framework\TestCase
 {
@@ -20,7 +20,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
     protected $productRepository;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Product
+     * @var \Visma\SeoMetaRobots\Model\Resolver\Product
      */
     protected $productResolver;
 
@@ -40,7 +40,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->productResolver = $this->objectManager->create(\MageSuite\SeoMetaRobots\Model\Resolver\Product::class, ['request' => $this->requestStub]);
+        $this->productResolver = $this->objectManager->create(\Visma\SeoMetaRobots\Model\Resolver\Product::class, ['request' => $this->requestStub]);
     }
 
     public static function productsFixture()
@@ -78,8 +78,8 @@ class ProductTest extends \PHPUnit\Framework\TestCase
     public static function productsWithTags()
     {
         return [
-            ['product_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
-            ['product_noindex_follow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
+            ['product_noindex_nofollow', \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
+            ['product_noindex_follow', \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
         ];
     }
 }

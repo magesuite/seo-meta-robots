@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Setup;
+namespace Visma\SeoMetaRobots\Setup;
 
 class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
 {

@@ -16,7 +16,7 @@ $category
     ->setIsActive(true)
     ->setPosition(1)
     ->setAvailableSortBy(['position'])
-    ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW)
+    ->setMetaRobots(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW)
     ->save()
     ->reindex();
 
@@ -34,6 +34,6 @@ $category
     ->setIsActive(true)
     ->setPosition(1)
     ->setAvailableSortBy(['position'])
-    ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW)
+    ->setMetaRobots(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW)
     ->save()
     ->reindex();

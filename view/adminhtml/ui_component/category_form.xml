@@ -17,7 +17,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag" />
+                        <options class="Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag" />
                     </settings>
                 </select>
             </formElements>

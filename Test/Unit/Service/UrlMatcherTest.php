@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
+namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
 class UrlMatcherTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
     protected $objectManager;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Service\UrlMatcher
+     * @var \Visma\SeoMetaRobots\Service\UrlMatcher
      */
     protected $urlMatcher;
 
@@ -18,7 +18,7 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 
-        $this->urlMatcher = $this->objectManager->create(\MageSuite\SeoMetaRobots\Service\UrlMatcher::class);
+        $this->urlMatcher = $this->objectManager->create(\Visma\SeoMetaRobots\Service\UrlMatcher::class);
     }
 
     /**

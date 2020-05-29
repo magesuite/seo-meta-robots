@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Model\Resolver;
+namespace Visma\SeoMetaRobots\Model\Resolver;
 
 class CmsPage implements RobotsTagResolverInterface
 {

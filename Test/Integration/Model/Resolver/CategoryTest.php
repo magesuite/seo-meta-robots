@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
+namespace Visma\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class CategoryTest extends \PHPUnit\Framework\TestCase
 {
@@ -23,7 +23,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
     protected $categoryRepository;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Category
+     * @var \Visma\SeoMetaRobots\Model\Resolver\Category
      */
     protected $categoryResolver;
 
@@ -43,7 +43,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->categoryResolver = $this->objectManager->create(\MageSuite\SeoMetaRobots\Model\Resolver\Category::class, ['request' => $this->requestStub]);
+        $this->categoryResolver = $this->objectManager->create(\Visma\SeoMetaRobots\Model\Resolver\Category::class, ['request' => $this->requestStub]);
     }
 
     public static function categoriesFixture()
@@ -81,8 +81,8 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
     public static function categoriesWithTags()
     {
         return [
-            [self::NOINDEX_NOFOLLOW_CATEGORY_ID, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
-            [self::NOINDEX_FOLLOW_CATEGORY_ID, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
+            [self::NOINDEX_NOFOLLOW_CATEGORY_ID, \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
+            [self::NOINDEX_FOLLOW_CATEGORY_ID, \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
         ];
     }
 }

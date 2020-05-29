@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Observer;
+namespace Visma\SeoMetaRobots\Observer;
 
 class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 {
@@ -10,7 +10,7 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
     protected $pageConfig;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator
+     * @var \Visma\SeoMetaRobots\Service\RobotsTagGenerator
      */
     protected $robotsTagGenerator;
     /**
@@ -20,7 +20,7 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 
     public function __construct(
         \Magento\Framework\View\Page\Config $pageConfig,
-        \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator,
+        \Visma\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator,
         \Magento\Framework\View\LayoutInterface $layout
     ) {
         $this->pageConfig = $pageConfig;

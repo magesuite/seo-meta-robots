@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
+namespace Visma\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class CmsTest extends \PHPUnit\Framework\TestCase
 {
@@ -54,7 +54,7 @@ class CmsTest extends \PHPUnit\Framework\TestCase
         $page = $this->pageRepository->getById($pageId);
 
         $resolver = $this->objectManager->create(
-            \MageSuite\SeoMetaRobots\Model\Resolver\CmsPage::class,
+            \Visma\SeoMetaRobots\Model\Resolver\CmsPage::class,
             ['cmsPage' => $page, 'request' => $this->requestStub]
         );
 
@@ -64,8 +64,8 @@ class CmsTest extends \PHPUnit\Framework\TestCase
     public static function cmsPagesWithTags()
     {
         return [
-            ['page_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
-            ['page_noindex_follow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
+            ['page_noindex_nofollow', \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
+            ['page_noindex_follow', \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW],
         ];
     }
 }

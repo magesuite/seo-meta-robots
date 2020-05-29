@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Service;
+namespace Visma\SeoMetaRobots\Service;
 
 class UrlMatcher
 {

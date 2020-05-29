@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
+namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
 class ResolversPoolTest extends \PHPUnit\Framework\TestCase
 {
@@ -16,14 +16,14 @@ class ResolversPoolTest extends \PHPUnit\Framework\TestCase
 
     public function testItReturnsEmptyArrayWhenNoResolversWereDefined()
     {
-        $resolversPool = new \MageSuite\SeoMetaRobots\Model\ResolversPool();
+        $resolversPool = new \Visma\SeoMetaRobots\Model\ResolversPool();
 
         $this->assertEquals([], $resolversPool->getResolvers());
     }
 
     public function testItReturnsResolversSortedBySortOrder()
     {
-        $resolversPool = new \MageSuite\SeoMetaRobots\Model\ResolversPool(
+        $resolversPool = new \Visma\SeoMetaRobots\Model\ResolversPool(
             [
                 ['resolver' => new \stdClass(), 'sort_order' => 30],
                 ['resolver' => new \stdClass(), 'sort_order' => 40],

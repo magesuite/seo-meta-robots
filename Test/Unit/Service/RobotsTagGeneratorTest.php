@@ -1,6 +1,6 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
+namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
 class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,12 +10,12 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
     protected $objectManager;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator
+     * @var \Visma\SeoMetaRobots\Service\RobotsTagGenerator
      */
     protected $robotsTagGenerator;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\MageSuite\SeoMetaRobots\Model\ResolversPool
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Visma\SeoMetaRobots\Model\ResolversPool
      */
     protected $resolversPool;
 
@@ -23,19 +23,19 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 
-        $this->resolversPool = $this->getMockBuilder(\MageSuite\SeoMetaRobots\Model\ResolversPool::class)
+        $this->resolversPool = $this->getMockBuilder(\Visma\SeoMetaRobots\Model\ResolversPool::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $this->robotsTagGenerator = $this->objectManager->create(
-            \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator::class,
+            \Visma\SeoMetaRobots\Service\RobotsTagGenerator::class,
             ['resolversPool' => $this->resolversPool]
         );
     }
 
     public function testItReturnsValueWhenFirstResolverResolvedIt()
     {
-        $resolvers = $this->generateResolvers([null, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW]);
+        $resolvers = $this->generateResolvers([null, \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW]);
 
         $this->resolversPool->method('getResolvers')
             ->willReturn($resolvers);
@@ -50,7 +50,7 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         $this->resolversPool->method('getResolvers')
             ->willReturn($resolvers);
 
-        $expectedDefaultValue = \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW];
+        $expectedDefaultValue = \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW];
         $this->assertEquals($expectedDefaultValue, $this->robotsTagGenerator->generate());
     }
 
@@ -59,7 +59,7 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         $resolvers = [];
 
         foreach ($values as $value) {
-            $resolvers[] = ['resolver' => new class($value) implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
+            $resolvers[] = ['resolver' => new class($value) implements \Visma\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
                 protected $value;
                 public function __construct($value)
                 {
