@@ -2,6 +2,8 @@
 
 namespace Visma\SeoMetaRobots\Service;
 
+use Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag;
+
 class RobotsTagGenerator
 {
     /**
@@ -25,10 +27,10 @@ class RobotsTagGenerator
             $resolvedValue = $resolver->resolve();
 
             if ($resolvedValue != null) {
-                return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[$resolvedValue];
+                return RobotsMetaTag::$values[$resolvedValue];
             }
         }
 
-        return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW];
+        return RobotsMetaTag::$values[RobotsMetaTag::INDEX_FOLLOW];
     }
 }

@@ -4,16 +4,6 @@ namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
 class ResolversPoolTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
-
-    public function setUp()
-    {
-        $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
-    }
-
     public function testItReturnsEmptyArrayWhenNoResolversWereDefined()
     {
         $resolversPool = new \Visma\SeoMetaRobots\Model\ResolversPool();

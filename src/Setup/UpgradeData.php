@@ -4,7 +4,7 @@ namespace Visma\SeoMetaRobots\Setup;
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
-    const ATTRIBUTE_CODE = 'meta_robots';
+    public const ATTRIBUTE_CODE = 'meta_robots';
 
     /**
      * @var \Magento\Eav\Setup\EavSetup

@@ -30,7 +30,8 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $pageLayout = $this->pageConfig->getPageLayout() ? $this->pageConfig->getPageLayout() : $this->layout->getUpdate()->getPageLayout();
+        $pageLayout = $this->pageConfig->getPageLayout() ? $this->pageConfig->getPageLayout() :
+            $this->layout->getUpdate()->getPageLayout();
 
         if (!$pageLayout) {
             return;

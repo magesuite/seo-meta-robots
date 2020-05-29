@@ -2,16 +2,19 @@
 
 namespace Visma\SeoMetaRobots\Setup;
 
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
+
 class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
 {
-    const COLUMN_NAME = 'meta_robots';
+    public const COLUMN_NAME = 'meta_robots';
 
-    public function upgrade(\Magento\Framework\Setup\SchemaSetupInterface $setup, \Magento\Framework\Setup\ModuleContextInterface $context)
+    public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
 
         $cmsPageTable = $setup->getTable('cms_page');
-
+        //phpcs:ignore
         if (version_compare($context->getVersion(), '1.0.1', '<') &&
             !$setup->getConnection()->tableColumnExists($cmsPageTable, self::COLUMN_NAME)
         ) {

@@ -4,11 +4,12 @@ namespace Visma\SeoMetaRobots\Helper;
 
 class Configuration
 {
-    const URLS_XML_PATH = 'visma_seo_meta_robots/robots_meta_tags/urls';
-    const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH = 'visma_seo_meta_robots/robots_meta_tags/index_only_on_first_page_of_category';
+    public const URLS_XML_PATH = 'visma_seo_meta_robots/robots_meta_tags/urls';
+    public const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH =
+        'visma_seo_meta_robots/robots_meta_tags/index_only_on_first_page_of_category';
 
-    const LINES_DELIMITER = PHP_EOL;
-    const COLUMNS_DELIMITER = ';';
+    public const LINES_DELIMITER = PHP_EOL;
+    public const COLUMNS_DELIMITER = ';';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -37,8 +38,8 @@ class Configuration
 
             try {
                 $return[] = ['expression' => $url[0], 'tag' => $url[1]];
-            }
-            catch (\Exception $exception) {
+            // phpcs:ignore
+            } catch (\Exception $exception) {
                 //Do nothing.
             }
         }
