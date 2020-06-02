@@ -2,10 +2,13 @@
 
 namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag;
+
 class UrlTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\TestFramework\ObjectManager
+     * @var ObjectManager
      */
     protected $objectManager;
     /**
@@ -23,11 +26,20 @@ class UrlTest extends \PHPUnit\Framework\TestCase
      */
     protected $urlResolver;
 
+    /**
+     * @var \Visma\SeoMetaRobots\Service\UrlMatcher
+     */
+    protected $urlMatcher;
+
     public function setUp()
     {
-        $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
+        $this->objectManager = new ObjectManager($this);
 
         $this->configurationStub = $this->getMockBuilder(\Visma\SeoMetaRobots\Helper\Configuration::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->urlMatcher = $this->getMockBuilder(\Visma\SeoMetaRobots\Service\UrlMatcher::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -35,9 +47,13 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->urlResolver = $this->objectManager->create(
+        $this->urlResolver = $this->objectManager->getObject(
             \Visma\SeoMetaRobots\Model\Resolver\Url::class,
-            ['configuration' => $this->configurationStub, 'request' => $this->requestStub]
+            [
+                'configuration' => $this->configurationStub,
+                'request' => $this->requestStub,
+                'urlMatcher' => $this->urlMatcher,
+            ]
         );
     }
 
@@ -49,9 +65,10 @@ class UrlTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->requestStub->method('getRequestUri')->willReturn('/matched.html');
+        $this->urlMatcher->expects($this->at(1))->method('match')->willReturn(true);
 
         $result = $this->urlResolver->resolve();
 
-        $this->assertEquals(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, $result);
+        $this->assertEquals(RobotsMetaTag::INDEX_NOFOLLOW, $result);
     }
 }

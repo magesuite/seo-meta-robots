@@ -41,7 +41,6 @@ class Url implements RobotsTagResolverInterface
         }
 
         $uri = ltrim($this->request->getRequestUri(), '/');
-
         foreach ($urls as $url) {
             if ($this->urlMatcher->match($uri, $url['expression'])) {
                 return $this->tagToReturnValue($url['tag']);

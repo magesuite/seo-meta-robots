@@ -4,8 +4,8 @@ namespace Visma\SeoMetaRobots\Model\Resolver\Category;
 
 class IndexOnlyOnFirstPageOfCategory implements \Visma\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
-    const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
-    const PAGINATION_PARAM = 'p';
+    public const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
+    public const PAGINATION_PARAM = 'p';
     /**
      * @var \Magento\Framework\App\Request\Http
      */

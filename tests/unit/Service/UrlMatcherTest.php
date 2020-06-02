@@ -2,10 +2,12 @@
 
 namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+
 class UrlMatcherTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\TestFramework\ObjectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
@@ -16,9 +18,9 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
+        $this->objectManager = new ObjectManager($this);
 
-        $this->urlMatcher = $this->objectManager->create(\Visma\SeoMetaRobots\Service\UrlMatcher::class);
+        $this->urlMatcher = $this->objectManager->getObject(\Visma\SeoMetaRobots\Service\UrlMatcher::class);
     }
 
     /**

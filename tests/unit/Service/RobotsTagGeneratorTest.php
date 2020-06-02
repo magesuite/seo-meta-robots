@@ -2,10 +2,12 @@
 
 namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+
 class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\TestFramework\ObjectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
@@ -21,13 +23,13 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
+        $this->objectManager = new ObjectManager($this);
 
         $this->resolversPool = $this->getMockBuilder(\Visma\SeoMetaRobots\Model\ResolversPool::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->robotsTagGenerator = $this->objectManager->create(
+        $this->robotsTagGenerator = $this->objectManager->getObject(
             \Visma\SeoMetaRobots\Service\RobotsTagGenerator::class,
             ['resolversPool' => $this->resolversPool]
         );
