@@ -2,27 +2,23 @@
 <config
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="visma" translate="label" sortOrder="300">
-            <label>Visma Digital Commerce</label>
-        </tab>
-        <section id="seo" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>SEO</label>
-            <tab>visma</tab>
-            <resource>Visma_SeoMetaRobots::configuration</resource>
-            <group id="robots_meta_tags" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Robots meta tags</label>
-                <field id="urls" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>URL rules</label>
+        <section id="catalog">
+            <tab>catalog</tab>
+            <group id="seo">
+                <field id="robots_url_rules" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta robots tag URL rules</label>
                     <comment>
                         <![CDATA[Please provide one URL rule per line. Each rule must have following format: "URL_EXPRESSION;ROBOTS_TAG". Example URL_EXPRESSION: "test/*", "product.html". Allowed robots tag are: INDEX_FOLLOW, INDEX_NOFOLLOW, NOINDEX_FOLLOW, NOINDEX_NOFOLLOW]]>
                     </comment>
+                    <frontend_class>test</frontend_class>
                 </field>
-                <field id="index_only_on_first_page_of_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="robots_index_only_on_first_page_of_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>NOINDEX on category pagination</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>
                         <![CDATA[When enabled only first page of a category will have INDEX,FOLLOW robots tag. All others will receive NOINDEX,FOLLOW]]>
                     </comment>
+                    <frontend_class>test</frontend_class>
                 </field>
             </group>
         </section>

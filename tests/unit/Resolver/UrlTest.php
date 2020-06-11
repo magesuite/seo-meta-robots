@@ -59,7 +59,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testItMatchesUrlsCorrectly()
     {
-        $this->configurationStub->method('getUrls')->willReturn([
+        $this->configurationStub->method('getUrlRules')->willReturn([
             ['expression' => 'notmatched', 'tag' => 'NOINDEX_NOFOLLOW'],
             ['expression' => 'matched*', 'tag' => 'INDEX_NOFOLLOW'],
         ]);
