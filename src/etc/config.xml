@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <seo>
-            <visma_seo_meta_robots>
-                <index_only_on_first_page_of_category>0</index_only_on_first_page_of_category>
-            </visma_seo_meta_robots>
-        </seo>
+        <catalog>
+            <seo>
+                <robots_index_only_on_first_page_of_category>0</robots_index_only_on_first_page_of_category>
+            </seo>
+        </catalog>
     </default>
 </config>

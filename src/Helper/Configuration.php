@@ -4,9 +4,9 @@ namespace Visma\SeoMetaRobots\Helper;
 
 class Configuration
 {
-    public const URLS_XML_PATH = 'visma_seo_meta_robots/robots_meta_tags/urls';
-    public const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH =
-        'visma_seo_meta_robots/robots_meta_tags/index_only_on_first_page_of_category';
+    public const ROBOTS_URL_RULES_PATH = 'catalog/seo/robots_url_rules';
+    public const ROBOTS_INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH =
+        'catalog/seo/robots_index_only_on_first_page_of_category';
 
     public const LINES_DELIMITER = PHP_EOL;
     public const COLUMNS_DELIMITER = ';';
@@ -21,23 +21,26 @@ class Configuration
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function getUrls()
+    public function getUrlRules()
     {
-        $urls = $this->scopeConfig->getValue(self::URLS_XML_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $rules = $this->scopeConfig->getValue(
+            self::ROBOTS_URL_RULES_PATH,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
 
-        if (empty($urls)) {
+        if (empty($rules)) {
             return [];
         }
 
-        $urls = explode(self::LINES_DELIMITER, $this->cleanUrlsList($urls));
+        $rules = explode(self::LINES_DELIMITER, $this->cleanUrlsList($rules));
 
         $return = [];
 
-        foreach ($urls as $url) {
-            $url = explode(self::COLUMNS_DELIMITER, $url);
+        foreach ($rules as $rule) {
+            $rule = explode(self::COLUMNS_DELIMITER, $rule);
 
             try {
-                $return[] = ['expression' => $url[0], 'tag' => $url[1]];
+                $return[] = ['expression' => $rule[0], 'tag' => $rule[1]];
             // phpcs:ignore
             } catch (\Exception $exception) {
                 //Do nothing.
@@ -58,7 +61,7 @@ class Configuration
     public function isIndexOnCategoryFirstPageEnabled()
     {
         return $this->scopeConfig->getValue(
-            self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH,
+            self::ROBOTS_INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }

@@ -34,16 +34,16 @@ class Url implements RobotsTagResolverInterface
      */
     public function resolve()
     {
-        $urls = $this->configuration->getUrls();
+        $rules = $this->configuration->getUrlRules();
 
-        if (empty($urls)) {
+        if (empty($rules)) {
             return null;
         }
 
         $uri = ltrim($this->request->getRequestUri(), '/');
-        foreach ($urls as $url) {
-            if ($this->urlMatcher->match($uri, $url['expression'])) {
-                return $this->tagToReturnValue($url['tag']);
+        foreach ($rules as $rule) {
+            if ($this->urlMatcher->match($uri, $rule['expression'])) {
+                return $this->tagToReturnValue($rule['tag']);
             }
         }
 
