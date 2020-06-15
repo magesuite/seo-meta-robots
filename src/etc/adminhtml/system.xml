@@ -10,7 +10,6 @@
                     <comment>
                         <![CDATA[Please provide one URL rule per line. Each rule must have following format: "URL_EXPRESSION;ROBOTS_TAG". Example URL_EXPRESSION: "test/*", "product.html". Allowed robots tag are: INDEX_FOLLOW, INDEX_NOFOLLOW, NOINDEX_FOLLOW, NOINDEX_NOFOLLOW]]>
                     </comment>
-                    <frontend_class>test</frontend_class>
                 </field>
                 <field id="robots_index_only_on_first_page_of_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>NOINDEX on category pagination</label>
@@ -18,7 +17,6 @@
                     <comment>
                         <![CDATA[When enabled only first page of a category will have INDEX,FOLLOW robots tag. All others will receive NOINDEX,FOLLOW]]>
                     </comment>
-                    <frontend_class>test</frontend_class>
                 </field>
             </group>
         </section>
