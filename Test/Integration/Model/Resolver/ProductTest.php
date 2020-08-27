@@ -29,7 +29,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
      */
     protected $requestStub;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 

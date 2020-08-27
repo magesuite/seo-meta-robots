@@ -23,7 +23,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
      */
     protected $urlResolver;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 
