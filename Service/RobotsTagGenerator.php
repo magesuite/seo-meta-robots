@@ -17,18 +17,18 @@ class RobotsTagGenerator
     public function generate()
     {
         $resolvers = $this->resolversPool->getResolvers();
+        $values = \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values;
 
         foreach ($resolvers as $resolver) {
             /** @var \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface $resolver */
             $resolver = $resolver['resolver'];
-
             $resolvedValue = $resolver->resolve();
 
-            if ($resolvedValue != null) {
-                return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[$resolvedValue];
+            if ($resolvedValue && isset($values[$resolvedValue])) {
+                return $values[$resolvedValue];
             }
         }
 
-        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW];
+        return $values[\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW];
     }
 }
