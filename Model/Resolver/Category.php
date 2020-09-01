@@ -28,20 +28,16 @@ class Category implements RobotsTagResolverInterface
     public function resolve()
     {
         $fullActionName = $this->request->getFullActionName();
-
-        if ($fullActionName != 'catalog_category_view') {
-            return null;
-        }
-
         $category = $this->registry->registry('current_category');
-
-        if ($category == null) {
+        
+        if ($fullActionName != 'catalog_category_view' 
+            || !$category instanceof \Magento\Catalog\Model\Category) {
             return null;
         }
 
         $metaRobots = $category->getMetaRobots();
 
-        if ($metaRobots == null) {
+        if (empty($metaRobots)) {
             return null;
         }
 
