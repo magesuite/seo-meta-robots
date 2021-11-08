@@ -51,7 +51,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                 \Magento\Catalog\Model\Product::ENTITY,
                 self::ATTRIBUTE_CODE,
                 [
-                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                     'type' => 'int',
                     'unique' => false,
                     'label' => 'Meta Robots',
@@ -78,7 +78,7 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
                 \Magento\Catalog\Model\Category::ENTITY,
                 self::ATTRIBUTE_CODE,
                 [
-                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                     'type' => 'int',
                     'unique' => false,
                     'label' => 'Meta Robots',
