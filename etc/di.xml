@@ -62,4 +62,16 @@
             </argument>
         </arguments>
     </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Category">
+        <plugin name="remove_not_indexed_not_followed_categories" type="MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\Category\RemoveNotIndexedNotFollowedCategories" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Product">
+        <plugin name="remove_not_indexed_not_followed_products" type="MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\Product\RemoveNotIndexedNotFollowedProducts" />
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\CmsPage">
+        <plugin name="remove_not_indexed_not_followed_cms_pages" type="MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\CmsPage\RemoveNotIndexedNotFollowedCmsPages" />
+    </type>
 </config>
