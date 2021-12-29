@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config 
+<config
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="magesuite" translate="label" sortOrder="300">
@@ -22,6 +22,12 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>
                         <![CDATA[When enabled only first page of a category will have INDEX,FOLLOW robots tag. All others will receive NOINDEX,FOLLOW]]>
+                    </comment>
+                </field>
+                <field id="noindex_url_params" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Noindex Url Params (comma separated)</label>
+                    <comment>
+                        <![CDATA[Set robots tag to noindex if URL contains above param]]>
                     </comment>
                 </field>
             </group>

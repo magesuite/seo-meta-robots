@@ -21,8 +21,7 @@ class RemoveNotIndexedNotFollowedCategories
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection $categoryCollection,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-    )
-    {
+    ) {
         $this->categoryCollection = $categoryCollection;
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }

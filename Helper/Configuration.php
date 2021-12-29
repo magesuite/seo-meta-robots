@@ -6,6 +6,7 @@ class Configuration
 {
     const URLS_XML_PATH = 'seo/robots_meta_tags/urls';
     const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH = 'seo/robots_meta_tags/index_only_on_first_page_of_category';
+    const XML_PATH_NOINDEX_URL_PARAMS = 'seo/robots_meta_tags/noindex_url_params';
 
     const LINES_DELIMITER = PHP_EOL;
     const COLUMNS_DELIMITER = ';';
@@ -37,8 +38,8 @@ class Configuration
 
             try {
                 $return[] = ['expression' => $url[0], 'tag' => $url[1]];
-            }
-            catch (\Exception $exception) {
+                // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+            } catch (\Exception $exception) {
                 //Do nothing.
             }
         }
@@ -57,5 +58,16 @@ class Configuration
     public function isIndexOnCategoryFirstPageEnabled()
     {
         return $this->scopeConfig->getValue(self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getNoindexUrlParams(): array
+    {
+        $value = (string)$this->scopeConfig->getValue(self::XML_PATH_NOINDEX_URL_PARAMS);
+
+        if (empty($value)) {
+            return [];
+        }
+
+        return explode(',', $value);
     }
 }

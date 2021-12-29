@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace MageSuite\SeoMetaRobots\Model;
 
@@ -10,28 +11,26 @@ class ResolversPool
     protected $resolvers;
 
     /**
-     * ResolversPool constructor.
      * @param array $resolvers
      */
-    public function __construct(array $resolvers = null)
+    public function __construct(array $resolvers = [])
     {
-        $this->resolvers = $resolvers;
+        $this->resolvers = $this->sortResolvers($resolvers);
     }
 
-    public function getResolvers()
+    /**
+     * @return array
+     */
+    public function getResolvers(): array
     {
-        if ($this->resolvers == null) {
-            return [];
-        }
-
-        return $this->sortResolvers($this->resolvers);
+        return $this->resolvers;
     }
 
     /**
      * @param array $resolvers
      * @return array
      */
-    private function sortResolvers(array $resolvers)
+    protected function sortResolvers(array $resolvers)
     {
         usort($resolvers, function (array $resolverLeft, array $resolverRight) {
             if ($resolverLeft['sort_order'] == $resolverRight['sort_order']) {

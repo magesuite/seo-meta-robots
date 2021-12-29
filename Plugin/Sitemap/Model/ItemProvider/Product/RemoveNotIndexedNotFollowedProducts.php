@@ -21,8 +21,7 @@ class RemoveNotIndexedNotFollowedProducts
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\Product\Collection $productCollecction,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-    )
-    {
+    ) {
         $this->productCollecction = $productCollecction;
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }

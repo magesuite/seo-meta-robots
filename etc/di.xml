@@ -3,6 +3,10 @@
     <type name="MageSuite\SeoMetaRobots\Model\ResolversPool">
         <arguments>
             <argument name="resolvers" xsi:type="array">
+                <item name="url_contains_no_index_params" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\UrlContainsNoIndexParams</item>
+                    <item name="sort_order" xsi:type="number">5</item>
+                </item>
                 <item name="url" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Url</item>
                     <item name="sort_order" xsi:type="number">10</item>
