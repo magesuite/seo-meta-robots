@@ -4,6 +4,7 @@
         <seo>
             <robots_meta_tags>
                 <index_only_on_first_page_of_category>0</index_only_on_first_page_of_category>
+                <noindex_url_params>SID,___store</noindex_url_params>
             </robots_meta_tags>
         </seo>
     </default>

@@ -35,7 +35,11 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function testItReturnsValueWhenFirstResolverResolvedIt()
     {
-        $resolvers = $this->generateResolvers([null, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW]);
+        $resolvers = $this->generateResolvers([
+            null,
+            \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_NOFOLLOW,
+            \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW
+        ]);
 
         $this->resolversPool->method('getResolvers')
             ->willReturn($resolvers);

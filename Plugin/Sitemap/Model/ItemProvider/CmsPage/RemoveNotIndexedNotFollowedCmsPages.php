@@ -21,8 +21,7 @@ class RemoveNotIndexedNotFollowedCmsPages
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage\Collection $cmsPageCollection,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-    )
-    {
+    ) {
         $this->cmsPageCollection = $cmsPageCollection;
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
@@ -47,6 +46,4 @@ class RemoveNotIndexedNotFollowedCmsPages
 
         return $result;
     }
-
-
 }

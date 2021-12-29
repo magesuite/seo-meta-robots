@@ -38,7 +38,7 @@ class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractS
                 ['label' => 'INDEX,FOLLOW', 'value' => self::INDEX_FOLLOW],
                 ['label' => 'INDEX,NOFOLLOW', 'value' => self::INDEX_NOFOLLOW],
                 ['label' => 'NOINDEX,FOLLOW', 'value' => self::NOINDEX_FOLLOW],
-                ['label' => 'NOINDEX,NOFOLLOW', 'value' => self::NOINDEX_NOFOLLOW],
+                ['label' => 'NOINDEX,NOFOLLOW', 'value' => self::NOINDEX_NOFOLLOW]
             ];
         }
 

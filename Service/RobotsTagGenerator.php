@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace MageSuite\SeoMetaRobots\Service;
 
@@ -14,10 +15,10 @@ class RobotsTagGenerator
         $this->resolversPool = $resolversPool;
     }
 
-    public function generate()
+    public function generate(): string
     {
-        $resolvers = $this->resolversPool->getResolvers();
         $values = \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values;
+        $resolvers = $this->resolversPool->getResolvers();
 
         foreach ($resolvers as $resolver) {
             /** @var \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface $resolver */

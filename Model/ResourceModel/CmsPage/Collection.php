@@ -14,8 +14,7 @@ class Collection
      */
     public function __construct(
         \Magento\Framework\App\ResourceConnection $resource
-    )
-    {
+    ) {
         $this->resource = $resource;
     }
 
@@ -35,7 +34,8 @@ class Collection
                 'meta_robots_option' => 'meta_robots'
             ]
         )->where(
-            ' cms_page.page_id IN (?)', $pagesIds
+            ' cms_page.page_id IN (?)',
+            $pagesIds
         );
 
         $result = $connection

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace MageSuite\SeoMetaRobots\Helper;
 
@@ -10,12 +11,11 @@ class MetaRobotsTag
      */
     public function isNoIndexOption(int $option): bool
     {
-        if ($option === \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW
-            || $option === \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW
-        ) {
-            return true;
-        }
+        $noIndexOptions = [
+            \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW,
+            \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW
+        ];
 
-        return false;
+        return in_array($option, $noIndexOptions);
     }
 }

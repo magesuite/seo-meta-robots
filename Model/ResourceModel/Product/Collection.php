@@ -21,8 +21,7 @@ class Collection
     public function __construct(
         \Magento\Framework\App\ResourceConnection $resource,
         \Magento\Framework\EntityManager\MetadataPool $metadataPool
-    )
-    {
+    ) {
         $this->resource = $resource;
         $this->metadataPool = $metadataPool;
     }
@@ -63,7 +62,8 @@ class Collection
             'eav_attribute.attribute_code = ?',
             \MageSuite\SeoMetaRobots\Setup\UpgradeData::ATTRIBUTE_CODE
         )->where(
-            ' catalog_product_entity.entity_id IN (?)', $productsIds
+            ' catalog_product_entity.entity_id IN (?)',
+            $productsIds
         )->group(
             'catalog_product_entity.entity_id'
         );
