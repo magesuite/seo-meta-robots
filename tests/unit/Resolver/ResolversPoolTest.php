@@ -2,23 +2,33 @@
 
 namespace Visma\SeoMetaRobots\Test\Unit\Resolver;
 
-class ResolversPoolTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use stdClass;
+use Visma\SeoMetaRobots\Model\ResolversPool;
+
+class ResolversPoolTest extends TestCase
 {
+    /**
+     * @covers \Visma\SeoMetaRobots\Model\ResolversPool::getResolvers
+     */
     public function testItReturnsEmptyArrayWhenNoResolversWereDefined()
     {
-        $resolversPool = new \Visma\SeoMetaRobots\Model\ResolversPool();
+        $resolversPool = new ResolversPool();
 
         $this->assertEquals([], $resolversPool->getResolvers());
     }
 
+    /**
+     * @covers \Visma\SeoMetaRobots\Model\ResolversPool::getResolvers
+     */
     public function testItReturnsResolversSortedBySortOrder()
     {
-        $resolversPool = new \Visma\SeoMetaRobots\Model\ResolversPool(
+        $resolversPool = new ResolversPool(
             [
-                ['resolver' => new \stdClass(), 'sort_order' => 30],
-                ['resolver' => new \stdClass(), 'sort_order' => 40],
-                ['resolver' => new \stdClass(), 'sort_order' => 10],
-                ['resolver' => new \stdClass(), 'sort_order' => 20],
+                ['resolver' => new stdClass(), 'sort_order' => 30],
+                ['resolver' => new stdClass(), 'sort_order' => 40],
+                ['resolver' => new stdClass(), 'sort_order' => 10],
+                ['resolver' => new stdClass(), 'sort_order' => 20],
             ]
         );
 

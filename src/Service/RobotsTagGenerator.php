@@ -3,6 +3,7 @@
 namespace Visma\SeoMetaRobots\Service;
 
 use Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag;
+use Visma\SeoMetaRobots\Model\ResolversPool;
 
 class RobotsTagGenerator
 {
@@ -11,7 +12,7 @@ class RobotsTagGenerator
      */
     protected $resolversPool;
 
-    public function __construct(\Visma\SeoMetaRobots\Model\ResolversPool $resolversPool)
+    public function __construct(ResolversPool $resolversPool)
     {
         $this->resolversPool = $resolversPool;
     }
@@ -19,6 +20,7 @@ class RobotsTagGenerator
     public function generate()
     {
         $resolvers = $this->resolversPool->getResolvers();
+        $values =& RobotsMetaTag::$values;
 
         foreach ($resolvers as $resolver) {
             /** @var \Visma\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface $resolver */
@@ -27,10 +29,10 @@ class RobotsTagGenerator
             $resolvedValue = $resolver->resolve();
 
             if ($resolvedValue != null) {
-                return RobotsMetaTag::$values[$resolvedValue];
+                return $values[$resolvedValue];
             }
         }
 
-        return RobotsMetaTag::$values[RobotsMetaTag::INDEX_FOLLOW];
+        return $values[RobotsMetaTag::INDEX_FOLLOW];
     }
 }

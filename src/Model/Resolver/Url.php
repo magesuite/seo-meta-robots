@@ -2,6 +2,11 @@
 
 namespace Visma\SeoMetaRobots\Model\Resolver;
 
+use Magento\Framework\App\Request\Http;
+use Visma\SeoMetaRobots\Helper\Configuration;
+use Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag;
+use Visma\SeoMetaRobots\Service\UrlMatcher;
+
 class Url implements RobotsTagResolverInterface
 {
     /**
@@ -20,9 +25,9 @@ class Url implements RobotsTagResolverInterface
     protected $configuration;
 
     public function __construct(
-        \Magento\Framework\App\Request\Http $request,
-        \Visma\SeoMetaRobots\Service\UrlMatcher $urlMatcher,
-        \Visma\SeoMetaRobots\Helper\Configuration $configuration
+        Http $request,
+        UrlMatcher $urlMatcher,
+        Configuration $configuration
     ) {
         $this->request = $request;
         $this->urlMatcher = $urlMatcher;
@@ -53,11 +58,12 @@ class Url implements RobotsTagResolverInterface
     protected function tagToReturnValue($tag)
     {
         $tag = strtoupper($tag);
+        $tags =& RobotsMetaTag::$tags;
 
-        if (!isset(\Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag])) {
+        if (!isset($tags[$tag])) {
             return null;
         }
 
-        return \Visma\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$tag];
+        return $tags[$tag];
     }
 }

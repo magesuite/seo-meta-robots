@@ -28,6 +28,9 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
         $this->layout = $layout;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $pageLayout = $this->pageConfig->getPageLayout() ? $this->pageConfig->getPageLayout() :
