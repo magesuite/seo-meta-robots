@@ -1,0 +1,13 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:MageSuite_Changelog:etc/changelog.xsd">
+    <module id="MageSuite_SeoMetaRobots" name="MageSuite_SeoMetaRobots">
+        <changelog>
+            <tag version="1.1.2" date="2023-03-23">
+                <entry>
+                    <type>CHORE</type>
+                    <overview>Add missing MGS-icon and changelog</overview>
+                    <ticket_id>MGS-1316</ticket_id>
+                </entry>
+            </tag>
+        </changelog>
+    </module>
+</config>

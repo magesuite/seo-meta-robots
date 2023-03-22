@@ -7,6 +7,7 @@
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">page</item>
                     <item name="default" xsi:type="string">website</item>
+                    <item name="additionalClasses" xsi:type="string">cs-csfeature__logo</item>
                 </item>
             </argument>
             <settings>
