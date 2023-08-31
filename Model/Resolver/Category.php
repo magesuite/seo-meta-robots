@@ -29,7 +29,7 @@ class Category implements RobotsTagResolverInterface
     {
         $fullActionName = $this->request->getFullActionName();
         $category = $this->registry->registry('current_category');
-        
+
         if ($fullActionName != 'catalog_category_view'
             || !$category instanceof \Magento\Catalog\Model\Category) {
             return null;
