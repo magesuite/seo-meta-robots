@@ -7,21 +7,19 @@ class Configuration
     const URLS_XML_PATH = 'seo/robots_meta_tags/urls';
     const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH = 'seo/robots_meta_tags/index_only_on_first_page_of_category';
     const XML_PATH_NOINDEX_URL_PARAMS = 'seo/robots_meta_tags/noindex_url_params';
+    const XML_PATH_NOINDEX_CUSTOMER_SPECIFIC_PAGES = 'seo/robots_meta_tags/noindex_customer_specific_pages';
 
     const LINES_DELIMITER = PHP_EOL;
     const COLUMNS_DELIMITER = ';';
 
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $scopeConfig;
+    protected \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig;
 
     public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
     {
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function getUrls()
+    public function getUrls(): array
     {
         $urls = $this->scopeConfig->getValue(self::URLS_XML_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
@@ -47,7 +45,7 @@ class Configuration
         return $return;
     }
 
-    protected function cleanUrlsList($urlsList)
+    protected function cleanUrlsList($urlsList): ?string
     {
         $urlsList = str_replace("\r\n", "\n", $urlsList);
         $urlsList = str_replace("\r", "\n", $urlsList);
@@ -55,9 +53,14 @@ class Configuration
         return $urlsList;
     }
 
-    public function isIndexOnCategoryFirstPageEnabled()
+    public function isIndexOnCategoryFirstPageEnabled(): bool
     {
-        return $this->scopeConfig->getValue(self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->isSetFlag(self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isNoIndexForCustomerSpecificPagesEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_NOINDEX_CUSTOMER_SPECIFIC_PAGES, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     public function getNoindexUrlParams(): array

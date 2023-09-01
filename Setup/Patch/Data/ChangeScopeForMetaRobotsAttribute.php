@@ -4,20 +4,10 @@ namespace MageSuite\SeoMetaRobots\Setup\Patch\Data;
 
 class ChangeScopeForMetaRobotsAttribute implements \Magento\Framework\Setup\Patch\DataPatchInterface
 {
-    /**
-     * @var \Magento\Framework\Setup\ModuleDataSetupInterface
-     */
-    protected $moduleDataSetup;
+    protected \Magento\Framework\Setup\ModuleDataSetupInterface $moduleDataSetup;
 
-    /**
-     * @var \Magento\Eav\Setup\EavSetupFactory
-     */
-    protected $eavSetupFactory;
+    protected \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory;
 
-    /**
-     * @param \Magento\Framework\Setup\ModuleDataSetupInterface $moduleDataSetup
-     * @param \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory
-     */
     public function __construct(
         \Magento\Framework\Setup\ModuleDataSetupInterface $moduleDataSetup,
         \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory
@@ -26,10 +16,6 @@ class ChangeScopeForMetaRobotsAttribute implements \Magento\Framework\Setup\Patc
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
-    /**
-     * @return AddFeatureMaxLoadAttributeOption|void
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
     public function apply()
     {
         $this->moduleDataSetup->getConnection()->startSetup();
@@ -61,17 +47,11 @@ class ChangeScopeForMetaRobotsAttribute implements \Magento\Framework\Setup\Patc
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getDependencies()
     {
         return [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAliases()
     {
         return [];

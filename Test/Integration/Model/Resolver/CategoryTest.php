@@ -7,30 +7,18 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
     const NOINDEX_NOFOLLOW_CATEGORY_ID = 333;
     const NOINDEX_FOLLOW_CATEGORY_ID = 334;
 
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
+
+    protected ?\Magento\Framework\Registry $registry;
+
+    protected ?\Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository;
+
+    protected ?\MageSuite\SeoMetaRobots\Model\Resolver\Category $categoryResolver;
 
     /**
-     * @var \Magento\Framework\Registry
+     * @var \Magento\Framework\App\Request\Http
      */
-    protected $registry;
-
-    /**
-     * @var \Magento\Catalog\Api\CategoryRepositoryInterface
-     */
-    protected $categoryRepository;
-
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Category
-     */
-    protected $categoryResolver;
-
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Magento\Framework\App\Request\Http
-     */
-    protected $requestStub;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $requestStub;
 
     public function setUp(): void
     {
@@ -46,21 +34,11 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
         $this->categoryResolver = $this->objectManager->create(\MageSuite\SeoMetaRobots\Model\Resolver\Category::class, ['request' => $this->requestStub]);
     }
 
-    public static function categoriesFixture()
-    {
-        include __DIR__ . '/../../_files/categories.php';
-    }
-
-    public static function categoriesFixtureRollback()
-    {
-        include __DIR__ . '/../../_files/categories_rollback.php';
-    }
-
     /**
      * @magentoAppArea frontend
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
-     * @magentoDataFixture categoriesFixture
+     * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
      * @dataProvider categoriesWithTags
      */
     public function testItResolvesCorrectRobotsTag($categoryId, $expectedRobotsTag)

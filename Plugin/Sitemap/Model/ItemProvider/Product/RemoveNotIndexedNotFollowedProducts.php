@@ -4,20 +4,11 @@ namespace MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\Product;
 
 class RemoveNotIndexedNotFollowedProducts
 {
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\ResourceModel\Product\Collection
-     */
-    protected $productCollecction;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag
-     */
-    protected $metaRobotsTagHelper;
+    protected \MageSuite\SeoMetaRobots\Model\ResourceModel\Product\Collection $productCollecction;
 
-    /**
-     * @param \MageSuite\SeoMetaRobots\Model\ResourceModel\Product\Collection $productCollecction
-     * @param \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-     */
+    protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
+
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\Product\Collection $productCollecction,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
@@ -26,13 +17,6 @@ class RemoveNotIndexedNotFollowedProducts
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
 
-    /**
-     * @param \Magento\Sitemap\Model\ItemProvider\Product $product
-     * @param $result
-     * @param int $storeId
-     * @return mixed
-     * @throws \Zend_Db_Statement_Exception
-     */
     public function afterGetItems(\Magento\Sitemap\Model\ItemProvider\Product $product, $result, int $storeId)
     {
         $productsIds = array_keys($result);

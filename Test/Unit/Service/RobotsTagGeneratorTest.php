@@ -4,20 +4,14 @@ namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
 
 class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
+
+    protected ?\MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator
+     * @var \MageSuite\SeoMetaRobots\Model\ResolversPool
      */
-    protected $robotsTagGenerator;
-
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\MageSuite\SeoMetaRobots\Model\ResolversPool
-     */
-    protected $resolversPool;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $resolversPool;
 
     public function setUp(): void
     {
@@ -65,10 +59,12 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         foreach ($values as $value) {
             $resolvers[] = ['resolver' => new class($value) implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
                 protected $value;
+
                 public function __construct($value)
                 {
                     $this->value = $value;
                 }
+
                 public function resolve()
                 {
                     return $this->value;

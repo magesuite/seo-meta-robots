@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
 
 class UrlMatcherTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Service\UrlMatcher
-     */
-    protected $urlMatcher;
+    protected ?\MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
 
     public function setUp(): void
     {

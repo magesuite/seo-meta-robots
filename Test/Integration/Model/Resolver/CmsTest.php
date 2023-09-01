@@ -4,20 +4,11 @@ namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class CmsTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
 
-    /**
-     * @var \Magento\Cms\Api\PageRepositoryInterface
-     */
-    protected $pageRepository;
+    protected ?\Magento\Cms\Api\PageRepositoryInterface $pageRepository;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $requestStub;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $requestStub;
 
     public function setUp(): void
     {
@@ -30,21 +21,11 @@ class CmsTest extends \PHPUnit\Framework\TestCase
         $this->pageRepository = $this->objectManager->get(\Magento\Cms\Api\PageRepositoryInterface::class);
     }
 
-    public static function pagesFixture()
-    {
-        include __DIR__ . '/../../_files/pages.php';
-    }
-
-    public static function pagesFixtureRollback()
-    {
-        include __DIR__ . '/../../_files/pages_rollback.php';
-    }
-
     /**
      * @magentoAppArea frontend
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
-     * @magentoDataFixture pagesFixture
+     * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/pages.php
      * @dataProvider cmsPagesWithTags
      */
     public function testItResolvesCorrectRobotsTag($pageId, $expectedRobotsTag)

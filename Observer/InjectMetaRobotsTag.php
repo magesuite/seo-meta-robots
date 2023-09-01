@@ -4,19 +4,11 @@ namespace MageSuite\SeoMetaRobots\Observer;
 
 class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 {
-    /**
-     * @var \Magento\Framework\View\Page\Config
-     */
-    protected $pageConfig;
+    protected \Magento\Framework\View\Page\Config $pageConfig;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator
-     */
-    protected $robotsTagGenerator;
-    /**
-     * @var \Magento\Framework\View\LayoutInterface
-     */
-    protected $layout;
+    protected \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator;
+
+    protected \Magento\Framework\View\LayoutInterface $layout;
 
     public function __construct(
         \Magento\Framework\View\Page\Config $pageConfig,

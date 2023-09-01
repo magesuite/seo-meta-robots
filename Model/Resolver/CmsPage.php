@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class CmsPage implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var \Magento\Cms\Model\Page
-     */
-    protected $cmsPage;
+    protected \Magento\Cms\Model\Page $cmsPage;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -22,9 +16,6 @@ class CmsPage implements RobotsTagResolverInterface
         $this->cmsPage = $cmsPage;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $fullActionName = $this->request->getFullActionName();

@@ -4,25 +4,13 @@ namespace MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage;
 
 class Collection
 {
-    /**
-     * @var \Magento\Framework\App\ResourceConnection
-     */
-    protected $resource;
+    protected \Magento\Framework\App\ResourceConnection $resource;
 
-    /**
-     * @param \Magento\Framework\App\ResourceConnection $resource
-     */
-    public function __construct(
-        \Magento\Framework\App\ResourceConnection $resource
-    ) {
+    public function __construct(\Magento\Framework\App\ResourceConnection $resource)
+    {
         $this->resource = $resource;
     }
 
-    /**
-     * @param array $productsIds
-     * @return array
-     * @throws \Zend_Db_Statement_Exception
-     */
     public function getCmsPagesMetaRobotsAttributes(array $pagesIds): array
     {
         /** @var \Magento\Framework\DB\Adapter\Pdo\Mysql $connection */
@@ -47,11 +35,7 @@ class Collection
         return $cmsPagesMetaRobotsAttributes;
     }
 
-    /**
-     * @param array|null $result
-     * @return array
-     */
-    private function convertResult(?array $result): array
+    protected function convertResult(?array $result): array
     {
         if (!$result) {
             return [];

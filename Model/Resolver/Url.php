@@ -4,20 +4,11 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Url implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Service\UrlMatcher
-     */
-    protected $urlMatcher;
+    protected \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Helper\Configuration
-     */
-    protected $configuration;
+    protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -29,9 +20,6 @@ class Url implements RobotsTagResolverInterface
         $this->configuration = $configuration;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $urls = $this->configuration->getUrls();
@@ -51,7 +39,7 @@ class Url implements RobotsTagResolverInterface
         return null;
     }
 
-    protected function tagToReturnValue($tag)
+    protected function tagToReturnValue($tag): ?int
     {
         $tag = strtoupper($tag);
 

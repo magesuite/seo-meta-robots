@@ -6,20 +6,11 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
 {
     const ATTRIBUTE_CODE = 'meta_robots';
 
-    /**
-     * @var \Magento\Eav\Setup\EavSetup
-     */
-    protected $eavSetup;
+    protected \Magento\Eav\Setup\EavSetup $eavSetup;
 
-    /**
-     * @var \Magento\Eav\Setup\EavSetupFactory
-     */
-    protected $eavSetupFactory;
+    protected \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory;
 
-    /**
-     * @var \Magento\Framework\Setup\ModuleDataSetupInterface
-     */
-    protected $moduleDataSetupInterface;
+    protected \Magento\Framework\Setup\ModuleDataSetupInterface $moduleDataSetupInterface;
 
     public function __construct(
         \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory,

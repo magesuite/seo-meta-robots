@@ -4,20 +4,10 @@ namespace MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\CmsPage;
 
 class RemoveNotIndexedNotFollowedCmsPages
 {
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage\Collection
-     */
-    protected $cmsPageCollection;
+    protected \MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage\Collection $cmsPageCollection;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag
-     */
-    protected $metaRobotsTagHelper;
+    protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
 
-    /**
-     * @param \MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage\Collection $cmsPageCollection
-     * @param \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-     */
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\CmsPage\Collection $cmsPageCollection,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
@@ -26,12 +16,6 @@ class RemoveNotIndexedNotFollowedCmsPages
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
 
-    /**
-     * @param \Magento\Sitemap\Model\ItemProvider\CmsPage $cmsPage
-     * @param $result
-     * @return mixed
-     * @throws \Zend_Db_Statement_Exception
-     */
     public function afterGetItems(\Magento\Sitemap\Model\ItemProvider\CmsPage $cmsPage, $result)
     {
         $pagesIds = array_keys($result);
