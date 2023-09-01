@@ -4,30 +4,18 @@ namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class ProductTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
+
+    protected ?\Magento\Framework\Registry $registry;
+
+    protected ?\Magento\Catalog\Api\ProductRepositoryInterface $productRepository;
+
+    protected ?\MageSuite\SeoMetaRobots\Model\Resolver\Product $productResolver;
 
     /**
-     * @var \Magento\Framework\Registry
+     * @var \Magento\Framework\App\Request\Http
      */
-    protected $registry;
-
-    /**
-     * @var \Magento\Catalog\Api\ProductRepositoryInterface
-     */
-    protected $productRepository;
-
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Product
-     */
-    protected $productResolver;
-
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Magento\Framework\App\Request\Http
-     */
-    protected $requestStub;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $requestStub;
 
     public function setUp(): void
     {
@@ -43,21 +31,11 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         $this->productResolver = $this->objectManager->create(\MageSuite\SeoMetaRobots\Model\Resolver\Product::class, ['request' => $this->requestStub]);
     }
 
-    public static function productsFixture()
-    {
-        include __DIR__ . '/../../_files/products.php';
-    }
-
-    public static function productsFixtureRollback()
-    {
-        include __DIR__ . '/../../_files/products_rollback.php';
-    }
-
     /**
      * @magentoAppArea frontend
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
-     * @magentoDataFixture productsFixture
+     * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/products.php
      * @dataProvider productsWithTags
      */
     public function testItResolvesCorrectRobotsTag($sku, $expectedRobotsTag)

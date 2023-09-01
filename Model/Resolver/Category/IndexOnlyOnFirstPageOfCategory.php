@@ -6,19 +6,12 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
 {
     const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
     const PAGINATION_PARAM = 'p';
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
 
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $registry;
-    /**
-     * @var \MageSuite\SeoMetaRobots\Helper\Configuration
-     */
-    protected $configuration;
+    protected \Magento\Framework\App\Request\Http $request;
+
+    protected \Magento\Framework\Registry $registry;
+
+    protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,

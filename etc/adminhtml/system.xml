@@ -24,7 +24,14 @@
                         <![CDATA[When enabled only first page of a category will have INDEX,FOLLOW robots tag. All others will receive NOINDEX,FOLLOW]]>
                     </comment>
                 </field>
-                <field id="noindex_url_params" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="noindex_customer_specific_pages" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Make customer specific pages non-indexable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[When enabled all pages under URLs contains "checkout/*" and "customer/*" will receive NOINDEX,FOLLOW]]>
+                    </comment>
+                </field>
+                <field id="noindex_url_params" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Noindex Url Params (comma separated)</label>
                     <comment>
                         <![CDATA[Set robots tag to noindex if URL contains above param]]>

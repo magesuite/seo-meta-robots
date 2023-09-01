@@ -4,24 +4,19 @@ namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
 
 class UrlTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $configurationStub;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
+     * @var \MageSuite\SeoMetaRobots\Helper\Configuration
      */
-    protected $requestStub;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $configurationStub;
 
     /**
-     * @var \MageSuite\SeoMetaRobots\Model\Resolver\Url
+     * @var \Magento\Framework\App\Request\Http
      */
-    protected $urlResolver;
+    protected ?\PHPUnit\Framework\MockObject\MockObject $requestStub;
+
+    protected ?\MageSuite\SeoMetaRobots\Model\Resolver\Url $urlResolver;
 
     public function setUp(): void
     {

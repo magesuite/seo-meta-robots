@@ -4,10 +4,7 @@ namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
 
 class ResolversPoolTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var \Magento\TestFramework\ObjectManager
-     */
-    protected $objectManager;
+    protected ?\Magento\TestFramework\ObjectManager $objectManager;
 
     public function setUp(): void
     {

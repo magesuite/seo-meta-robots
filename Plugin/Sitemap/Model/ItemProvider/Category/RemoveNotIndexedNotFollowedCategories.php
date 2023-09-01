@@ -4,20 +4,10 @@ namespace MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\Category;
 
 class RemoveNotIndexedNotFollowedCategories
 {
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection
-     */
-    protected $categoryCollection;
+    protected \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection $categoryCollection;
 
-    /**
-     * @var \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag
-     */
-    protected $metaRobotsTagHelper;
+    protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
 
-    /**
-     * @param \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection $categoryCollection
-     * @param \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
-     */
     public function __construct(
         \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection $categoryCollection,
         \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
@@ -26,13 +16,6 @@ class RemoveNotIndexedNotFollowedCategories
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
 
-    /**
-     * @param \Magento\Sitemap\Model\ItemProvider\Category $category
-     * @param $result
-     * @param int $storeId
-     * @return mixed
-     * @throws \Zend_Db_Statement_Exception
-     */
     public function afterGetItems(\Magento\Sitemap\Model\ItemProvider\Category $category, $result, int $storeId)
     {
         $categoriesIds = array_keys($result);

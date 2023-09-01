@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Product implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $registry;
+    protected \Magento\Framework\Registry $registry;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -22,9 +16,6 @@ class Product implements RobotsTagResolverInterface
         $this->registry = $registry;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $fullActionName = $this->request->getFullActionName();

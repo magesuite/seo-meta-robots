@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Category implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $registry;
+    protected \Magento\Framework\Registry $registry;
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -22,16 +16,12 @@ class Category implements RobotsTagResolverInterface
         $this->registry = $registry;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $fullActionName = $this->request->getFullActionName();
         $category = $this->registry->registry('current_category');
 
-        if ($fullActionName != 'catalog_category_view'
-            || !$category instanceof \Magento\Catalog\Model\Category) {
+        if ($fullActionName != 'catalog_category_view' || !$category instanceof \Magento\Catalog\Model\Category) {
             return null;
         }
 

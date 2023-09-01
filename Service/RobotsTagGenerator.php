@@ -5,10 +5,7 @@ namespace MageSuite\SeoMetaRobots\Service;
 
 class RobotsTagGenerator
 {
-    /**
-     * @var \MageSuite\SeoMetaRobots\Model\ResolversPool
-     */
-    protected $resolversPool;
+    protected \MageSuite\SeoMetaRobots\Model\ResolversPool $resolversPool;
 
     public function __construct(\MageSuite\SeoMetaRobots\Model\ResolversPool $resolversPool)
     {

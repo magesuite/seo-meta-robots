@@ -5,10 +5,6 @@ namespace MageSuite\SeoMetaRobots\Helper;
 
 class MetaRobotsTag
 {
-    /**
-     * @param int $option
-     * @return bool
-     */
     public function isNoIndexOption(int $option): bool
     {
         $noIndexOptions = [

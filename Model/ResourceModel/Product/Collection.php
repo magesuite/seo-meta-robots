@@ -4,20 +4,10 @@ namespace MageSuite\SeoMetaRobots\Model\ResourceModel\Product;
 
 class Collection
 {
-    /**
-     * @var \Magento\Framework\App\ResourceConnection
-     */
-    protected $resource;
+    protected \Magento\Framework\App\ResourceConnection $resource;
 
-    /**
-     * @var \Magento\Framework\EntityManager\MetadataPool
-     */
-    protected $metadataPool;
+    protected \Magento\Framework\EntityManager\MetadataPool $metadataPool;
 
-    /**
-     * @param \Magento\Framework\App\ResourceConnection $resource
-     * @param \Magento\Framework\EntityManager\MetadataPool $metadataPool
-     */
     public function __construct(
         \Magento\Framework\App\ResourceConnection $resource,
         \Magento\Framework\EntityManager\MetadataPool $metadataPool
@@ -26,12 +16,6 @@ class Collection
         $this->metadataPool = $metadataPool;
     }
 
-    /**
-     * @param array $productsIds
-     * @param int $storeId
-     * @return array
-     * @throws \Zend_Db_Statement_Exception
-     */
     public function getProductsMetaRobotsAttributes(array $productsIds, int $storeId): array
     {
         $linkField = $this->metadataPool->getMetadata(\Magento\Catalog\Api\Data\ProductInterface::class)->getLinkField();
@@ -92,11 +76,7 @@ class Collection
         return $productsMetaRobotsAttributes;
     }
 
-    /**
-     * @param array|null $result
-     * @return array
-     */
-    private function convertResult(?array $result): array
+    protected function convertResult(?array $result): array
     {
         if (!$result) {
             return [];

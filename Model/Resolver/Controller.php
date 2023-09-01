@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Controller implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var array
-     */
-    protected $controllers;
+    protected array $controllers = [];
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -22,9 +16,6 @@ class Controller implements RobotsTagResolverInterface
         $this->controllers = $controllers;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $controller = sprintf('%s_%s', $this->request->getModuleName(), $this->request->getControllerName());

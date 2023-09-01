@@ -4,15 +4,9 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Action implements RobotsTagResolverInterface
 {
-    /**
-     * @var \Magento\Framework\App\Request\Http
-     */
-    protected $request;
+    protected \Magento\Framework\App\Request\Http $request;
 
-    /**
-     * @var array
-     */
-    protected $actions;
+    protected array $actions = [];
 
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
@@ -22,9 +16,6 @@ class Action implements RobotsTagResolverInterface
         $this->actions = $actions;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function resolve()
     {
         $action = $this->request->getFullActionName();
