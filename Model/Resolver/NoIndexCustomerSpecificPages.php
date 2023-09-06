@@ -5,25 +5,29 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class NoIndexCustomerSpecificPages implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
-    const NON_INDEXABLE_MODULES = [
-        'customer',
-        'checkout'
-    ];
-
     protected \Magento\Framework\App\Request\Http $request;
 
     protected \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
 
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
+    protected array $modules = [];
+
+    protected array $controllers = [];
+
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher,
-        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration
+        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration,
+        array $modules = [],
+        array $controllers = []
     ) {
         $this->request = $request;
         $this->urlMatcher = $urlMatcher;
         $this->configuration = $configuration;
+
+        $this->modules = $modules;
+        $this->controllers = $controllers;
     }
 
     public function resolve(): ?int
@@ -34,7 +38,13 @@ class NoIndexCustomerSpecificPages implements \MageSuite\SeoMetaRobots\Model\Res
 
         $controllerModule = $this->request->getModuleName();
 
-        if (in_array($controllerModule, self::NON_INDEXABLE_MODULES)) {
+        if (in_array($controllerModule, $this->modules)) {
+            return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW;
+        }
+
+        $controller = sprintf('%s_%s', $this->request->getModuleName(), $this->request->getControllerName());
+
+        if (in_array($controller, array_keys($this->controllers))) {
             return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW;
         }
 
