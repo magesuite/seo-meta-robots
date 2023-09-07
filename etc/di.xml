@@ -47,6 +47,23 @@
         </arguments>
     </type>
 
+    <type name="MageSuite\SeoMetaRobots\Model\Resolver\NoIndexCustomerSpecificPages">
+        <arguments>
+            <argument name="modules" xsi:type="array">
+                <item name="checkout" xsi:type="string">checkout</item>
+                <item name="customer" xsi:type="string">customer</item>
+                <item name="newsletter" xsi:type="string">newsletter</item>
+                <item name="pwanotifications" xsi:type="string">pwanotifications</item>
+                <item name="sales" xsi:type="string">sales</item>
+                <item name="wishlist" xsi:type="string">wishlist</item>
+                <item name="backinstock" xsi:type="string">backinstock</item>
+            </argument>
+            <argument name="controllers" xsi:type="array">
+                <item name="review_customer" xsi:type="string">review_customer</item>
+            </argument>
+        </arguments>
+    </type>
+
     <type name="MageSuite\SeoMetaRobots\Model\Resolver\Module">
         <arguments>
             <argument name="modules" xsi:type="array">
