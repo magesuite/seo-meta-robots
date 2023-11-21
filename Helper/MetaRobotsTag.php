@@ -14,4 +14,17 @@ class MetaRobotsTag
 
         return in_array($option, $noIndexOptions);
     }
+
+    public function getFollowOption(int $option): ?string
+    {
+        $metaRobotsTag = \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$values[$option] ?? null;
+
+        if ($metaRobotsTag == null) {
+            return null;
+        }
+
+        $parts = explode(',', $metaRobotsTag);
+
+        return $parts[1] ?? null;
+    }
 }

@@ -13,14 +13,18 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
 
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
+    protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
+
     public function __construct(
         \Magento\Framework\App\Request\Http $request,
         \Magento\Framework\Registry $registry,
-        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration
+        \MageSuite\SeoMetaRobots\Helper\Configuration $configuration,
+        \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper
     ) {
         $this->request = $request;
         $this->registry = $registry;
         $this->configuration = $configuration;
+        $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
 
     /**
@@ -45,10 +49,34 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
 
         $params = $this->request->getParams();
 
-        if (isset($params[self::PAGINATION_PARAM]) && $params[self::PAGINATION_PARAM] != 1) {
+        $metaRobots = $category->getMetaRobots();
+
+        if (!$this->isFirstPaginationPage($params)) {
+            return $this->getMetaRobotsTagForSubsequentPages($metaRobots);
+        }
+
+        return $metaRobots;
+    }
+
+    public function isFirstPaginationPage($params): bool
+    {
+        return !isset($params[self::PAGINATION_PARAM]) || ($params[self::PAGINATION_PARAM] == 1);
+    }
+
+    public function getMetaRobotsTagForSubsequentPages($metaRobots): ?string
+    {
+        if (empty($metaRobots)) {
             return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW;
         }
 
-        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW;
+        $followOption = $this->metaRobotsTagHelper->getFollowOption($metaRobots);
+
+        if (empty($followOption)) {
+            return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW;
+        }
+
+        $newMetaRobotsTagString = sprintf('NOINDEX_%s', $followOption);
+
+        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::$tags[$newMetaRobotsTagString] ?? null;
     }
 }
