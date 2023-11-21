@@ -37,3 +37,21 @@ $category
     ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW)
     ->save()
     ->reindex();
+
+$category = $objectManager->create(\Magento\Catalog\Model\Category::class);
+$category->isObjectNew(true);
+$category
+    ->setId(335)
+    ->setCreatedAt('2014-06-23 09:55:07')
+    ->setName('Category index,follow')
+    ->setParentId(2)
+    ->setPath('1/2/333')
+    ->setLevel(2)
+    ->setAvailableSortBy('name')
+    ->setDefaultSortBy('name')
+    ->setIsActive(true)
+    ->setPosition(1)
+    ->setAvailableSortBy(['position'])
+    ->setMetaRobots(\MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::INDEX_FOLLOW)
+    ->save()
+    ->reindex();

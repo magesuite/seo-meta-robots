@@ -7,7 +7,7 @@ $registry = $objectManager->get(\Magento\Framework\Registry::class);
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', true);
 
-$categoriesIds = [333, 334];
+$categoriesIds = [333, 334, 335];
 
 foreach ($categoriesIds as $categoryId) {
     $category = $objectManager->create(\Magento\Catalog\Model\Category::class);
