@@ -20,7 +20,9 @@ class CmsPage implements RobotsTagResolverInterface
     {
         $fullActionName = $this->request->getFullActionName();
 
-        if ($fullActionName != 'cms_index_index' && $fullActionName != 'cms_page_view') {
+        $allowedActions = ['cms_noroute_index', 'cms_index_index', 'cms_page_view'];
+        
+        if (!in_array($fullActionName, $allowedActions)) {
             return null;
         }
 
