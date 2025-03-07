@@ -67,7 +67,7 @@ class Configuration
         return explode(',', $value);
     }
 
-    protected function cleanUrlsList(array $urlsList): ?string
+    protected function cleanUrlsList(string $urlsList): string
     {
         $urlsList = str_replace("\r\n", "\n", $urlsList);
 
