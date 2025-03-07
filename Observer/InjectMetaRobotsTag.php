@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Observer;
 
 class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
 {
     protected \Magento\Framework\View\Page\Config $pageConfig;
-
     protected \MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator;
-
     protected \Magento\Framework\View\LayoutInterface $layout;
 
     public function __construct(
@@ -20,7 +20,7 @@ class InjectMetaRobotsTag implements \Magento\Framework\Event\ObserverInterface
         $this->layout = $layout;
     }
 
-    public function execute(\Magento\Framework\Event\Observer $observer)
+    public function execute(\Magento\Framework\Event\Observer $observer): void
     {
         $pageLayout = $this->pageConfig->getPageLayout() ?? $this->layout->getUpdate()->getPageLayout();
 
