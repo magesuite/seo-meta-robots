@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Plugin\Sitemap\Model\ItemProvider\Category;
 
 class RemoveNotIndexedNotFollowedCategories
 {
     protected \MageSuite\SeoMetaRobots\Model\ResourceModel\Category\Collection $categoryCollection;
-
     protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
 
     public function __construct(

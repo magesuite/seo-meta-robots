@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class CmsPage implements RobotsTagResolverInterface
 {
-    protected \Magento\Framework\App\Request\Http $request;
+    public const CMS_ACTION_NAMES = ['cms_index_index', 'cms_page_view', 'cms_noroute_index'];
 
+    protected \Magento\Framework\App\Request\Http $request;
     protected \Magento\Cms\Model\Page $cmsPage;
 
     public function __construct(
@@ -16,11 +19,11 @@ class CmsPage implements RobotsTagResolverInterface
         $this->cmsPage = $cmsPage;
     }
 
-    public function resolve()
+    public function resolve(): ?int
     {
         $fullActionName = $this->request->getFullActionName();
 
-        if ($fullActionName != 'cms_index_index' && $fullActionName != 'cms_page_view') {
+        if (!in_array($fullActionName, self::CMS_ACTION_NAMES)) {
             return null;
         }
 
@@ -30,6 +33,6 @@ class CmsPage implements RobotsTagResolverInterface
             return null;
         }
 
-        return $cmsPage->getMetaRobots();
+        return (int)$cmsPage->getMetaRobots();
     }
 }
