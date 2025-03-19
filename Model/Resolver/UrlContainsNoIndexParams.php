@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
@@ -6,7 +7,6 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 class UrlContainsNoIndexParams implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
     protected \Magento\Framework\App\Request\Http $request;
-
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
     public function __construct(

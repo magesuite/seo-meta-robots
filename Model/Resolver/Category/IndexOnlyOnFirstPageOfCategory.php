@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Resolver\Category;
 
 class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
-    const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
-    const PAGINATION_PARAM = 'p';
+    public const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
+    public const PAGINATION_PARAM = 'p';
 
     protected \Magento\Framework\App\Request\Http $request;
-
     protected \Magento\Framework\Registry $registry;
-
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
-
     protected \MageSuite\SeoMetaRobots\Helper\MetaRobotsTag $metaRobotsTagHelper;
 
     public function __construct(
@@ -27,10 +26,7 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         $this->metaRobotsTagHelper = $metaRobotsTagHelper;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function resolve()
+    public function resolve(): ?int
     {
         if (!$this->configuration->isIndexOnCategoryFirstPageEnabled()) {
             return null;
@@ -58,12 +54,12 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         return $metaRobots;
     }
 
-    public function isFirstPaginationPage($params): bool
+    public function isFirstPaginationPage(array $params): bool
     {
         return !isset($params[self::PAGINATION_PARAM]) || ($params[self::PAGINATION_PARAM] == 1);
     }
 
-    public function getMetaRobotsTagForSubsequentPages($metaRobots): ?string
+    public function getMetaRobotsTagForSubsequentPages(?int $metaRobots): ?int
     {
         if (empty($metaRobots)) {
             return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_FOLLOW;
