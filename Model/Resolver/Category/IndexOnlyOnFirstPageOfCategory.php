@@ -31,6 +31,7 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         if (!$this->configuration->isIndexOnCategoryFirstPageEnabled()) {
             return null;
         }
+        
         $fullActionName = $this->request->getFullActionName();
 
         if ($fullActionName != self::CATEGORY_VIEW_FULL_ACTION_NAME) {
@@ -44,8 +45,7 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         }
 
         $params = $this->request->getParams();
-
-        $metaRobots = $category->getMetaRobots();
+        $metaRobots = $category->getMetaRobots() ? (int)$category->getMetaRobots() : null;
 
         if (!$this->isFirstPaginationPage($params)) {
             return $this->getMetaRobotsTagForSubsequentPages($metaRobots);
