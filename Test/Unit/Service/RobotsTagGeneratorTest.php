@@ -1,11 +1,12 @@
 <?php
 
-namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
+declare(strict_types=1);
+
+namespace MageSuite\SeoMetaRobots\Test\Unit\Service;
 
 class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
 {
     protected ?\Magento\TestFramework\ObjectManager $objectManager;
-
     protected ?\MageSuite\SeoMetaRobots\Service\RobotsTagGenerator $robotsTagGenerator;
 
     /**
@@ -27,7 +28,7 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testItReturnsValueWhenFirstResolverResolvedIt()
+    public function testItReturnsValueWhenFirstResolverResolvedIt(): void
     {
         $resolvers = $this->generateResolvers([
             null,
@@ -41,7 +42,7 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('INDEX,NOFOLLOW', $this->robotsTagGenerator->generate());
     }
 
-    public function testItReturnsIndexFollowWhenNoResolverReturnedValue()
+    public function testItReturnsIndexFollowWhenNoResolverReturnedValue(): void
     {
         $resolvers = $this->generateResolvers([null, null]);
 
@@ -52,20 +53,20 @@ class RobotsTagGeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedDefaultValue, $this->robotsTagGenerator->generate());
     }
 
-    protected function generateResolvers($values)
+    protected function generateResolvers($values): array
     {
         $resolvers = [];
 
         foreach ($values as $value) {
-            $resolvers[] = ['resolver' => new class($value) implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
-                protected $value;
+            $resolvers[] = ['resolver' => new class ($value) implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface {
+                protected ?int $value;
 
-                public function __construct($value)
+                public function __construct(?int $value)
                 {
                     $this->value = $value;
                 }
 
-                public function resolve()
+                public function resolve(): ?int
                 {
                     return $this->value;
                 }
