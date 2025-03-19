@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
@@ -6,13 +7,10 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver;
 class NoIndexCustomerSpecificPages implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
     protected \Magento\Framework\App\Request\Http $request;
-
     protected \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
-
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
     protected array $modules = [];
-
     protected array $controllers = [];
 
     public function __construct(

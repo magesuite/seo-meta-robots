@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Url implements RobotsTagResolverInterface
 {
     protected \Magento\Framework\App\Request\Http $request;
-
     protected \MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
-
     protected \MageSuite\SeoMetaRobots\Helper\Configuration $configuration;
 
     public function __construct(
@@ -20,7 +20,7 @@ class Url implements RobotsTagResolverInterface
         $this->configuration = $configuration;
     }
 
-    public function resolve()
+    public function resolve(): ?int
     {
         $urls = $this->configuration->getUrls();
 
@@ -39,7 +39,7 @@ class Url implements RobotsTagResolverInterface
         return null;
     }
 
-    protected function tagToReturnValue($tag): ?int
+    protected function tagToReturnValue(string $tag): ?int
     {
         $tag = strtoupper($tag);
 

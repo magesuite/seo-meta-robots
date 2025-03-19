@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Module implements RobotsTagResolverInterface
 {
     protected \Magento\Framework\App\Request\Http $request;
-
     protected array $modules = [];
 
     public function __construct(
@@ -16,7 +17,7 @@ class Module implements RobotsTagResolverInterface
         $this->modules = $modules;
     }
 
-    public function resolve()
+    public function resolve(): ?int
     {
         $controllerModule = $this->request->getModuleName();
 

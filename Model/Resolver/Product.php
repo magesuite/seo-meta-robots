@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Resolver;
 
 class Product implements RobotsTagResolverInterface
 {
     protected \Magento\Framework\App\Request\Http $request;
-
     protected \Magento\Framework\Registry $registry;
 
     public function __construct(
@@ -16,7 +17,7 @@ class Product implements RobotsTagResolverInterface
         $this->registry = $registry;
     }
 
-    public function resolve()
+    public function resolve(): ?int
     {
         $fullActionName = $this->request->getFullActionName();
 
@@ -36,6 +37,6 @@ class Product implements RobotsTagResolverInterface
             return null;
         }
 
-        return $metaRobots;
+        return (int)$metaRobots;
     }
 }
