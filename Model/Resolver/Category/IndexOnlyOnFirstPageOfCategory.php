@@ -31,7 +31,7 @@ class IndexOnlyOnFirstPageOfCategory implements \MageSuite\SeoMetaRobots\Model\R
         if (!$this->configuration->isIndexOnCategoryFirstPageEnabled()) {
             return null;
         }
-        
+
         $fullActionName = $this->request->getFullActionName();
 
         if ($fullActionName != self::CATEGORY_VIEW_FULL_ACTION_NAME) {

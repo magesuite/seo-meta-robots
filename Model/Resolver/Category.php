@@ -32,6 +32,6 @@ class Category implements RobotsTagResolverInterface
             return null;
         }
 
-        return $metaRobots;
+        return (int)$metaRobots;
     }
 }
