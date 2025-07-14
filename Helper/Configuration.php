@@ -6,13 +6,14 @@ namespace MageSuite\SeoMetaRobots\Helper;
 
 class Configuration
 {
-    public const URLS_XML_PATH = 'seo/robots_meta_tags/urls';
-    public const INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH = 'seo/robots_meta_tags/index_only_on_first_page_of_category';
-    public const XML_PATH_NOINDEX_URL_PARAMS = 'seo/robots_meta_tags/noindex_url_params';
-    public const XML_PATH_NOINDEX_CUSTOMER_SPECIFIC_PAGES = 'seo/robots_meta_tags/noindex_customer_specific_pages';
+    protected const XML_PATH_ROBOTS_META_TAGS_URLS = 'seo/robots_meta_tags/urls';
+    protected const XML_PATH_ROBOTS_META_TAGS_INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY = 'seo/robots_meta_tags/index_only_on_first_page_of_category';
+    protected const XML_PATH_ROBOTS_META_TAGS_NOINDEX_NOFOLLOW_FOR_FILTERED_CATEGORY = 'seo/robots_meta_tags/noindex_nofollow_for_filtered_category';
+    protected const XML_PATH_ROBOTS_META_TAGS_NOINDEX_URL_PARAMS = 'seo/robots_meta_tags/noindex_url_params';
+    protected const XML_PATH_ROBOTS_META_TAGS_NOINDEX_CUSTOMER_SPECIFIC_PAGES = 'seo/robots_meta_tags/noindex_customer_specific_pages';
 
-    public const LINES_DELIMITER = PHP_EOL;
-    public const COLUMNS_DELIMITER = ';';
+    protected const LINES_DELIMITER = PHP_EOL;
+    protected const COLUMNS_DELIMITER = ';';
 
     protected \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig;
 
@@ -23,7 +24,7 @@ class Configuration
 
     public function getUrls(): array
     {
-        $urls = $this->scopeConfig->getValue(self::URLS_XML_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $urls = $this->scopeConfig->getValue(self::XML_PATH_ROBOTS_META_TAGS_URLS, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
         if (empty($urls)) {
             return [];
@@ -48,17 +49,22 @@ class Configuration
 
     public function isIndexOnCategoryFirstPageEnabled(): bool
     {
-        return $this->scopeConfig->isSetFlag(self::INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_ROBOTS_META_TAGS_INDEX_ONLY_ON_FIRST_PAGE_OF_CATEGORY, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isNoIndexNoFollowForFilteredCategoryEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_ROBOTS_META_TAGS_NOINDEX_NOFOLLOW_FOR_FILTERED_CATEGORY, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     public function isNoIndexForCustomerSpecificPagesEnabled(): bool
     {
-        return $this->scopeConfig->isSetFlag(self::XML_PATH_NOINDEX_CUSTOMER_SPECIFIC_PAGES, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_ROBOTS_META_TAGS_NOINDEX_CUSTOMER_SPECIFIC_PAGES, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     public function getNoindexUrlParams(): array
     {
-        $value = (string)$this->scopeConfig->getValue(self::XML_PATH_NOINDEX_URL_PARAMS);
+        $value = (string)$this->scopeConfig->getValue(self::XML_PATH_ROBOTS_META_TAGS_NOINDEX_URL_PARAMS);
 
         if (empty($value)) {
             return [];

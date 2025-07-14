@@ -23,6 +23,10 @@
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Product</item>
                     <item name="sort_order" xsi:type="number">20</item>
                 </item>
+                <item name="category_filters" xsi:type="array">
+                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category\DoNotFollowFilteredCategory</item>
+                    <item name="sort_order" xsi:type="number">25</item>
+                </item>
                 <item name="category_pagination" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category\IndexOnlyOnFirstPageOfCategory</item>
                     <item name="sort_order" xsi:type="number">30</item>

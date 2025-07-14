@@ -24,6 +24,13 @@
                         <![CDATA[When enabled only first page of a category will have INDEX,FOLLOW robots tag. All others will receive NOINDEX,FOLLOW]]>
                     </comment>
                 </field>
+                <field id="noindex_nofollow_for_filtered_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>NOINDEX,NOFOLLOW for filtered category pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[When enabled all category pages with applied filters will have NOINDEX,NOFOLLOW robots tag]]>
+                    </comment>
+                </field>
                 <field id="noindex_customer_specific_pages" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Make customer specific pages non-indexable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
