@@ -8,6 +8,10 @@ class UrlMatcher
 {
     public function match(string $url, string $expression): bool
     {
-        return fnmatch($expression, $url);
+        try {
+            return fnmatch($expression, $url);
+        } catch (\Throwable) {
+            return false;
+        }
     }
 }
