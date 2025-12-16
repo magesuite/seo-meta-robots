@@ -35,6 +35,8 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
             ['test/', 'test', false],
             ['test/something/else', 'test/', false],
             ['test.html', 'test*', true],
+            [str_repeat('test', 5000), 'test*', false],
+            [str_repeat('test', 100), 'test*', true],
         ];
     }
 }
