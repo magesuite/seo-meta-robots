@@ -28,7 +28,7 @@ class CmsTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/pages.php
      * @dataProvider cmsPagesWithTags
      */
-    public function testItResolvesCorrectRobotsTag(string $pageId, string $expectedRobotsTag): void
+    public function testItResolvesCorrectRobotsTag(string $pageId, int $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('cms_page_view');
 
