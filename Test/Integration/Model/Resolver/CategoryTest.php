@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class CategoryTest extends \PHPUnit\Framework\TestCase
@@ -8,11 +10,8 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
     const NOINDEX_FOLLOW_CATEGORY_ID = 334;
 
     protected ?\Magento\TestFramework\ObjectManager $objectManager;
-
     protected ?\Magento\Framework\Registry $registry;
-
     protected ?\Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository;
-
     protected ?\MageSuite\SeoMetaRobots\Model\Resolver\Category $categoryResolver;
 
     /**
@@ -41,7 +40,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
      * @dataProvider categoriesWithTags
      */
-    public function testItResolvesCorrectRobotsTag($categoryId, $expectedRobotsTag)
+    public function testItResolvesCorrectRobotsTag(int $categoryId, string $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('catalog_category_view');
 
@@ -56,7 +55,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedRobotsTag, $this->categoryResolver->resolve());
     }
 
-    public static function categoriesWithTags()
+    public static function categoriesWithTags(): array
     {
         return [
             [self::NOINDEX_NOFOLLOW_CATEGORY_ID, \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],

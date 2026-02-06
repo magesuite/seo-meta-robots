@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class CmsTest extends \PHPUnit\Framework\TestCase
 {
     protected ?\Magento\TestFramework\ObjectManager $objectManager;
-
     protected ?\Magento\Cms\Api\PageRepositoryInterface $pageRepository;
-
     protected ?\PHPUnit\Framework\MockObject\MockObject $requestStub;
 
     public function setUp(): void
@@ -28,7 +28,7 @@ class CmsTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/pages.php
      * @dataProvider cmsPagesWithTags
      */
-    public function testItResolvesCorrectRobotsTag($pageId, $expectedRobotsTag)
+    public function testItResolvesCorrectRobotsTag(string $pageId, string $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('cms_page_view');
 
@@ -42,7 +42,7 @@ class CmsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedRobotsTag, $resolver->resolve());
     }
 
-    public static function cmsPagesWithTags()
+    public static function cmsPagesWithTags(): array
     {
         return [
             ['page_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],

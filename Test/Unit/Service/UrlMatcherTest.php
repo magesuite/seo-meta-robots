@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Test\Unit\Resolver;
 
 class UrlMatcherTest extends \PHPUnit\Framework\TestCase
 {
     protected ?\Magento\TestFramework\ObjectManager $objectManager;
-
     protected ?\MageSuite\SeoMetaRobots\Service\UrlMatcher $urlMatcher;
 
     public function setUp(): void
@@ -18,14 +19,14 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider urls
      */
-    public function testItMatchesUrls($url, $expression, $expectedResult)
+    public function testItMatchesUrls(string $url, string $expression, bool $expectedResult)
     {
         $result = $this->urlMatcher->match($url, $expression);
 
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function urls()
+    public static function urls(): array
     {
         return [
             ['test/', 'test/*', true],

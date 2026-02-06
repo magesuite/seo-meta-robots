@@ -1,15 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Test\Integration\Model\Resolver;
 
 class ProductTest extends \PHPUnit\Framework\TestCase
 {
     protected ?\Magento\TestFramework\ObjectManager $objectManager;
-
     protected ?\Magento\Framework\Registry $registry;
-
     protected ?\Magento\Catalog\Api\ProductRepositoryInterface $productRepository;
-
     protected ?\MageSuite\SeoMetaRobots\Model\Resolver\Product $productResolver;
 
     /**
@@ -38,7 +37,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/products.php
      * @dataProvider productsWithTags
      */
-    public function testItResolvesCorrectRobotsTag($sku, $expectedRobotsTag)
+    public function testItResolvesCorrectRobotsTag(string $sku, string $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('catalog_product_view');
 
@@ -53,7 +52,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedRobotsTag, $this->productResolver->resolve());
     }
 
-    public static function productsWithTags()
+    public static function productsWithTags(): array
     {
         return [
             ['product_noindex_nofollow', \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW],
