@@ -6,7 +6,7 @@ namespace MageSuite\SeoMetaRobots\Model\Resolver\Category;
 
 class DoNotFollowFilteredCategory implements \MageSuite\SeoMetaRobots\Model\Resolver\RobotsTagResolverInterface
 {
-    private const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
+    protected const CATEGORY_VIEW_FULL_ACTION_NAME = 'catalog_category_view';
 
     public function __construct(
         protected \Magento\Framework\App\Request\Http $request,
@@ -19,7 +19,9 @@ class DoNotFollowFilteredCategory implements \MageSuite\SeoMetaRobots\Model\Reso
 
     public function resolve(): ?int
     {
-        if (!$this->configuration->isNoIndexNoFollowForFilteredCategoryEnabled()) {
+        $filteredCategoryRobots = $this->configuration->getFilteredCategoryRobots();
+
+        if ($filteredCategoryRobots === \MageSuite\SeoMetaRobots\Model\Config\Source\FilteredCategoryRobots::DEFAULT) {
             return null;
         }
 
@@ -29,7 +31,7 @@ class DoNotFollowFilteredCategory implements \MageSuite\SeoMetaRobots\Model\Reso
             return null;
         }
 
-        return \MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW;
+        return $filteredCategoryRobots;
     }
 
     protected function isCategoryObject(mixed $category): bool

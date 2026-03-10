@@ -11,7 +11,7 @@ class DoNotFollowFilteredCategoryTest extends \Magento\TestFramework\TestCase\Ab
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
-     * @magentoConfigFixture default_store seo/robots_meta_tags/noindex_nofollow_for_filtered_category 1
+     * @magentoConfigFixture default/seo/robots_meta_tags/filtered_category_robots 4
      */
     public function testItResolvesCorrectRobotsTagOnFilteredCategoryPageWhenSettingEnabled(): void
     {
@@ -33,7 +33,7 @@ class DoNotFollowFilteredCategoryTest extends \Magento\TestFramework\TestCase\Ab
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
-     * @magentoConfigFixture default_store seo/robots_meta_tags/noindex_nofollow_for_filtered_category 1
+     * @magentoConfigFixture default_store seo/robots_meta_tags/filtered_category_robots 4
      */
     public function testItResolvesCorrectRobotsTagOnNotFilteredCategoryPageWhenSettingEnabled(): void
     {
@@ -54,7 +54,7 @@ class DoNotFollowFilteredCategoryTest extends \Magento\TestFramework\TestCase\Ab
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
-     * @magentoConfigFixture default_store seo/robots_meta_tags/noindex_nofollow_for_filtered_category 0
+     * @magentoConfigFixture default_store seo/robots_meta_tags/filtered_category_robots 0
      */
     public function testItResolvesCorrectRobotsTagOnFilteredCategoryPageWhenSettingDisabled(): void
     {
