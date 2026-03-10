@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageSuite\SeoMetaRobots\Model\Config\Source\Attribute;
 
 class RobotsMetaTag extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource implements \Magento\Framework\Data\OptionSourceInterface
 {
-    const INDEX_FOLLOW = 1;
-    const INDEX_NOFOLLOW = 2;
-    const NOINDEX_FOLLOW = 3;
-    const NOINDEX_NOFOLLOW = 4;
+    public const INDEX_FOLLOW = 1;
+    public const INDEX_NOFOLLOW = 2;
+    public const NOINDEX_FOLLOW = 3;
+    public const NOINDEX_NOFOLLOW = 4;
 
     public static array $tags = [
         'INDEX_FOLLOW' => self::INDEX_FOLLOW,
