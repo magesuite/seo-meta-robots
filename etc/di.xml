@@ -23,10 +23,6 @@
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Product</item>
                     <item name="sort_order" xsi:type="number">20</item>
                 </item>
-                <item name="search" xsi:type="array">
-                    <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Search</item>
-                    <item name="sort_order" xsi:type="number">22</item>
-                </item>
                 <item name="category_filters" xsi:type="array">
                     <item name="resolver" xsi:type="object">MageSuite\SeoMetaRobots\Model\Resolver\Category\DoNotFollowFilteredCategory</item>
                     <item name="sort_order" xsi:type="number">25</item>
@@ -75,6 +71,7 @@
     <type name="MageSuite\SeoMetaRobots\Model\Resolver\Module">
         <arguments>
             <argument name="modules" xsi:type="array">
+                <item name="catalogsearch" xsi:type="const">MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW</item>
                 <item name="customer" xsi:type="const">MageSuite\SeoMetaRobots\Model\Config\Source\Attribute\RobotsMetaTag::NOINDEX_NOFOLLOW</item>
             </argument>
         </arguments>
