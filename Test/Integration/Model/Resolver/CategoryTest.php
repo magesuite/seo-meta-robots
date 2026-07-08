@@ -38,8 +38,8 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/categories.php
-     * @dataProvider categoriesWithTags
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('categoriesWithTags')]
     public function testItResolvesCorrectRobotsTag(int $categoryId, int $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('catalog_category_view');
