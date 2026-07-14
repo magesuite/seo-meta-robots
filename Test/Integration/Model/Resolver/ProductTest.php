@@ -35,8 +35,8 @@ class ProductTest extends \PHPUnit\Framework\TestCase
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/products.php
-     * @dataProvider productsWithTags
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('productsWithTags')]
     public function testItResolvesCorrectRobotsTag(string $sku, int $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('catalog_product_view');

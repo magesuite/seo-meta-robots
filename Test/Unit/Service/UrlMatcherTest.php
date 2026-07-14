@@ -16,9 +16,7 @@ class UrlMatcherTest extends \PHPUnit\Framework\TestCase
         $this->urlMatcher = $this->objectManager->create(\MageSuite\SeoMetaRobots\Service\UrlMatcher::class);
     }
 
-    /**
-     * @dataProvider urls
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('urls')]
     public function testItMatchesUrls(string $url, string $expression, bool $expectedResult)
     {
         $result = $this->urlMatcher->match($url, $expression);

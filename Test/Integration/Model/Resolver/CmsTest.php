@@ -26,8 +26,8 @@ class CmsTest extends \PHPUnit\Framework\TestCase
      * @magentoDbIsolation enabled
      * @magentoAppIsolation enabled
      * @magentoDataFixture MageSuite_SeoMetaRobots::Test/Integration/_files/pages.php
-     * @dataProvider cmsPagesWithTags
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('cmsPagesWithTags')]
     public function testItResolvesCorrectRobotsTag(string $pageId, int $expectedRobotsTag): void
     {
         $this->requestStub->method('getFullActionName')->willReturn('cms_page_view');
